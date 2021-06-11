@@ -1,0 +1,25 @@
+// While test
+
+PROC f(a,b) IS
+
+    WHILE a != b DO
+        IF a > b THEN
+            a := a - b
+        ELSE
+            b := b - a
+        END
+    END
+    
+    WHILE a > 0 DO a := a / 2 END
+
+    WHILE (caca*2 > 0*43) DO 
+        a := jeje
+        IF x == y THEN z := 1 END
+        IF x == y THEN z := 1 ELSE z := 2 END
+    END
+    
+END
+
+PROC main() IS
+    f(0.2,val1*9)
+END

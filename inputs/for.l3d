@@ -1,0 +1,25 @@
+// For test
+
+PROC f(a,b) IS
+
+    FOR i FROM 1 TO 4 DO
+        forward(mida)
+        left(90)
+    END
+    
+    FOR i FROM 1 TO costats DO
+        forward(mida)
+        left(360 / costats)
+    END
+    
+    FOR i FROM 1 TO 5 DO i := i + 1 << i END
+
+    FOR i FROM 1 TO 5 DO 
+        i := i + 1 
+        << i 
+    END
+END
+
+PROC main() IS
+    f(0.2,val1*9)
+END

@@ -1,0 +1,11 @@
+// Read test
+
+PROC f(a,b) IS
+    >> rado
+    >> rada >> rade 
+    >> radu
+END
+
+PROC main() IS
+    f(0.2,val1*9)
+END

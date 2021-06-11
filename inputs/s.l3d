@@ -1,0 +1,71 @@
+// Assignation test
+
+PROC name(casa, lolete) IS
+
+    a := 2 
+    a := (2*9) 
+    a := 2+2 
+    a := 2-3
+    a := 2*4
+    a := 2/8
+    perimetre := 2*3.1416*radi
+
+    b := 2 == 2
+    b := 3 != 3
+    b := 4 < 4
+    b := 5 > 5
+    b := 6 <= 6
+    b := 7 >= 7
+    b := False
+    b := True
+
+    perimetre := (2*7) > (54 == 53)
+
+    >> rado
+    >> rada >> rade 
+    >> radu
+
+    << 2 << 23+8 << abe
+    << (2*9)
+    << 2+2
+    << 2-3
+    << 2*4
+    << 2/8
+
+    IF x == y THEN z := 1 END
+
+    IF x == y THEN z := 1 ELSE z := 2 END
+
+    IF x == y THEN 
+        z := 1 
+    END
+
+    IF x == y THEN 
+        z := 1 
+    ELSE 
+        z := 2 
+    END
+
+    WHILE a > 0 DO a := a / 2 END
+
+    WHILE (caca*2 > 0*43) DO 
+        a := jeje
+        IF x == y THEN z := 1 END
+        IF x == y THEN z := 1 ELSE z := 2 END
+    END
+
+
+    FOR i FROM 1 TO 5 DO 
+        i := i + 1 
+        << i 
+    END
+
+    escriu(numero, 2)
+    color(0.2, 0.2, 1)
+    cercle(1, 12)
+    left(360 / costats)
+    forward(mida)
+    espiral(cercles - 1)
+
+END
+

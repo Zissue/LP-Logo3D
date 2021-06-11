@@ -1,0 +1,7 @@
+PROC quadratblau(mida) IS
+    color(0.2, 0.2, 1)
+    FOR i FROM 1 TO 4 DO
+        forward(mida)
+        left(90)
+    END
+END

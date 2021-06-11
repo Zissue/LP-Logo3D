@@ -1,0 +1,14 @@
+// Write test
+
+PROC f(a,b) IS
+    << 2 << 23+8 << abe
+    << (2*9)
+    << 2+2
+    << 2-3
+    << 2*4
+    << 2/8
+END
+
+PROC main() IS
+    f(0.2,val1*9)
+END

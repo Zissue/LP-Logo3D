@@ -1,0 +1,26 @@
+// Assignation test
+
+PROC f(a,b) IS
+    a := 2 
+    a := (2*9) 
+    a := 2+2 
+    a := 2-3
+    a := 2*4
+    a := 2/8
+    perimetre := 2*3.1416*radi
+
+    b := 2 == 2
+    b := 3 != 3
+    b := 4 < 4
+    b := 5 > 5
+    b := 6 <= 6
+    b := 7 >= 7
+    b := False
+    b := True
+    perimetre := (2*7) > (54 == 53)
+    
+END
+
+PROC main() IS
+    f(0.2,val1*9)
+END

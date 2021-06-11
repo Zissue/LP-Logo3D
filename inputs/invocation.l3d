@@ -1,0 +1,25 @@
+// Invocation test
+
+PROC f(a,b) IS
+
+    forward(mida)
+    left(360 / costats)
+
+    cercle(1, 12)
+    up(5)
+    espiral(cercles - 1)
+
+    espiral(5)
+
+    euclides(valor1, valor2)
+
+    forward(mida)
+    left(90)
+
+    escriu(numero, 2)
+    color(0.2, 0.2, 1)
+END
+
+PROC main() IS
+    f(0.2,val1*9)
+END

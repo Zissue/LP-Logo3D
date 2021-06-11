@@ -1,0 +1,23 @@
+// Conditional test
+
+PROC f(a,b) IS
+
+    IF x == y THEN z := 1 END
+
+    IF x == y THEN z := 1 ELSE z := 2 END
+    
+    IF x == y THEN 
+        z := 1 
+    END
+
+    IF x == y THEN 
+        z := 1 
+    ELSE 
+        z := 2 
+    END
+
+END
+
+PROC main() IS
+    f(0.2,val1*9)
+END
