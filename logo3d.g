@@ -6,10 +6,10 @@ grammar logo3d;
 
 root : proceD* EOF ;
 
-proceD : 'PROC' funcName '(' funcParam ')' 'IS' funcBody 'END' ;
-funcName : IDENT ;
-funcParam : (IDENT (COMMA IDENT)*)?;
-funcBody : stmt+ ;
+proceD : 'PROC' IDENT '(' (IDENT (COMMA IDENT)*)? ')' 'IS' stmt+ 'END' ;
+//funcName : IDENT ;
+//funcParam : (IDENT (COMMA IDENT)*)?;
+//funcBody : stmt+ ;
 
 // Statements 
 stmt : while_it
@@ -56,7 +56,7 @@ while_it : 'WHILE' expr 'DO' stmt+ 'END' ;
 
 for_it : 'FOR' IDENT 'FROM' expr 'TO' expr 'DO' stmt+ 'END' ;
 
-invocation : funcName '(' argsPassed ')' ;
+invocation : IDENT '(' argsPassed ')' ;
 argsPassed : (expr (',' expr)*)? ;
 
 
@@ -67,12 +67,32 @@ argsPassed : (expr (',' expr)*)? ;
 LP : '(' ;
 RP : ')' ;
 
+ASGN: ':=' ;
+
 EQ :   '==' ;
 DIF :  '!=' ;
 LT :   '<' ;
 GT :   '>' ;
 LTE :  '<=' ;
 GTE :  '>=' ;
+
+PROC : 'PROC' ;
+IS : 'IS' ;
+END : 'END' ;
+
+IF : 'IF' ;
+THEN : 'THEN' ;
+ELSE : 'ELSE' ;
+
+WHILE : 'WHILE' ;
+DO : 'DO' ;
+
+FOR : 'FOR' ;
+FROM : 'FROM' ;
+TO : 'TO' ;
+
+ROP : '>>' ;
+WOP : '<<' ;
 
 //ZERO : '0' ;
 //ONE :  '1' ;

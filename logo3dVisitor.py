@@ -19,21 +19,6 @@ class logo3dVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by logo3dParser#funcName.
-    def visitFuncName(self, ctx:logo3dParser.FuncNameContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by logo3dParser#funcParam.
-    def visitFuncParam(self, ctx:logo3dParser.FuncParamContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by logo3dParser#funcBody.
-    def visitFuncBody(self, ctx:logo3dParser.FuncBodyContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by logo3dParser#stmt.
     def visitStmt(self, ctx:logo3dParser.StmtContext):
         return self.visitChildren(ctx)
