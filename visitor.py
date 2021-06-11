@@ -9,38 +9,52 @@ class TreeVisitor(logo3dVisitor):
 
     # Class atributes
     def __init__(self):
-        self.nivell = 0
+        self.__nivell = 0
+        self.__funcStack = []
 
-    # Visit root 
+    # Visit 
     def visit(self, ctx):
+
         print("\n\nCalled visit() method:\n")
 
-        self.nivell += 1
-        self.visitlogo3d(ctx)
-        self.nivell -= 1
-
+        self.__nivell += 1
+        self.visitRoot(ctx)
+        self.__nivell -= 1
 
         print("\nEND of visit() method\n\n")
 
-    def visitlogo3d(self, ctx):
+    # Visit root 
+    def visitRoot(self, ctx):
 
         #print("==============================================")
-        #print(dir(ctx))
+        print("\nMethods:\n", dir(ctx),"\n")
+        #print(ctx.depth)
 
-        if 'getSymbol' in dir(ctx):
-            print(" - " * self.nivell + logo3dParser.symbolicNames[ctx.getSymbol().type])
+        l = list(ctx.getChildren())
+        n = len(l) == ctx.getChildCount()
+        print(len(l))
+        print(ctx.getChildCount())
 
-        if 'getChildren' in dir(ctx):
-
-            l = list(ctx.getChildren())
-
+        if len(l) <= 0:
+            print("\nNo procedures PROC in this file...\n")
+        else:
             for obj in l:
-                print(" - " * self.nivell + obj.getText())
+                print(" - " * self.__nivell + obj.getText())
 
-            self.nivell += 1
-            for obj in l:
-                self.visitlogo3d(obj)
-            self.nivell -= 1
+        #if 'getSymbol' in dir(ctx):
+        #    print(" - " * self.__nivell + logo3dParser.symbolicNames[ctx.getSymbol().type])
+
+        #if 'getChildren' in dir(ctx):
+
+        #    l = list(ctx.getChildren())
+
+        #    for obj in l:
+        #        print(" - " * self.__nivell + obj.getText())
+
+        #    self.__nivell += 1
+        #    for obj in l:
+        #        self.visitRoot(obj)
+        #    self.__nivell -= 1
 
 
     # Visit a parse tree produced by logo3dParser#proceD.

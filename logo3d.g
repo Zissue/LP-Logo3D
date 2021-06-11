@@ -6,7 +6,7 @@ grammar logo3d;
 
 root : proceD* EOF ;
 
-proceD : 'PROC' IDENT '(' (IDENT (COMMA IDENT)*)? ')' 'IS' stmt+ 'END' ;
+proceD : PROC IDENT LP (IDENT (COMMA IDENT)*)? RP IS stmt+ END ;
 //funcName : IDENT ;
 //funcParam : (IDENT (COMMA IDENT)*)?;
 //funcBody : stmt+ ;
@@ -21,9 +21,9 @@ stmt : while_it
      | invocation
      ;              //  | expr
 
-assignation : IDENT ':=' expr ;
+assignation : IDENT ASGN expr ;
 
-expr : '(' expr ')'
+expr : LP expr RP
      | expr EQ  expr
      | expr DIF expr
      | expr LT  expr
@@ -35,7 +35,7 @@ expr : '(' expr ')'
      | FALSE
      ;
 
-numExpr : '(' numExpr ')'
+numExpr : LP numExpr RP
         | numExpr MUL numExpr
         | numExpr DIV numExpr
         | numExpr ADD numExpr
@@ -44,20 +44,20 @@ numExpr : '(' numExpr ')'
         | IDENT                 // Variable (tipus real)
         ;
 
-read : '>>' IDENT ;
+read : ROP IDENT ;
 
-write : '<<' expr ;
+write : WOP expr ;
 
-conditional : 'IF' expr 'THEN' stmt+ 'END'
-            | 'IF' expr 'THEN' stmt+ 'ELSE' stmt+ 'END'
+conditional : IF expr THEN stmt+ END
+            | IF expr THEN stmt+ ELSE stmt+ END
             ;
 
-while_it : 'WHILE' expr 'DO' stmt+ 'END' ;
+while_it : WHILE expr DO stmt+ END ;
 
-for_it : 'FOR' IDENT 'FROM' expr 'TO' expr 'DO' stmt+ 'END' ;
+for_it : FOR IDENT FROM expr TO expr DO stmt+ END ;
 
-invocation : IDENT '(' argsPassed ')' ;
-argsPassed : (expr (',' expr)*)? ;
+invocation : IDENT LP argsPassed RP ;
+argsPassed : (expr (COMMA expr)*)? ;
 
 
 ///////////////// 
@@ -94,8 +94,6 @@ TO : 'TO' ;
 ROP : '>>' ;
 WOP : '<<' ;
 
-//ZERO : '0' ;
-//ONE :  '1' ;
 FALSE: 'False' ;
 TRUE : 'True' ;
 
