@@ -6,10 +6,10 @@ grammar logo3d;
 
 root : proceD* EOF ;
 
-proceD : PROC IDENT LP (IDENT (COMMA IDENT)*)? RP IS stmt+ END ;
-//funcName : IDENT ;
-//funcParam : (IDENT (COMMA IDENT)*)?;
-//funcBody : stmt+ ;
+proceD : funcHeader funcBody END ;
+funcHeader : PROC IDENT LP funcParam RP IS ;
+funcParam : (IDENT (COMMA IDENT)*)?;
+funcBody : stmt+ ;
 
 // Statements 
 stmt : while_it
@@ -19,7 +19,38 @@ stmt : while_it
      | write
      | conditional
      | invocation
-     ;              //  | expr
+     | color
+     | home
+     | show
+     | hide
+     | forward
+     | backward
+     | up
+     | down
+     | left
+     | right
+     // | expr
+     ;
+
+color : 'color' LP expr COMMA expr COMMA expr RP ;
+
+home : 'home' LP RP ;
+
+show : 'show' LP RP ;
+
+hide : 'hide' LP RP ;
+
+forward : 'forward' LP expr RP ;
+
+backward : 'backward' LP expr RP ;
+
+up : 'up' LP expr RP ;
+
+down : 'down' LP expr RP ;
+
+left : 'left' LP expr RP ;
+
+right : 'right' LP expr RP ;
 
 assignation : IDENT ASGN expr ;
 
@@ -31,8 +62,8 @@ expr : LP expr RP
      | expr LTE expr
      | expr GTE expr
      | numExpr
-     | TRUE
-     | FALSE
+     | TRUE     // == 1
+     | FALSE    // == 0
      ;
 
 numExpr : LP numExpr RP
