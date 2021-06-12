@@ -13,11 +13,22 @@ PROC f(a,b) IS
 
     euclides(valor1, valor2)
 
+    
+    color(0.2, 0.2, 1)
+    home()
+
+    show()
+    hide()
+
+
     forward(mida)
-    left(90)
+    backward(32)
+    down(90)
+    up(lol)
+    left(0)
+    right(caca)
 
     escriu(numero, 2)
-    color(0.2, 0.2, 1)
 END
 
 PROC main() IS

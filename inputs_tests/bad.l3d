@@ -1,0 +1,7 @@
+PROC lol()IS
+    hide()
+END
+
+PROC lol()IS
+    yep()
+END

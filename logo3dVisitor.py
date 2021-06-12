@@ -19,8 +19,73 @@ class logo3dVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by logo3dParser#funcHeader.
+    def visitFuncHeader(self, ctx:logo3dParser.FuncHeaderContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by logo3dParser#funcParam.
+    def visitFuncParam(self, ctx:logo3dParser.FuncParamContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by logo3dParser#funcBody.
+    def visitFuncBody(self, ctx:logo3dParser.FuncBodyContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by logo3dParser#stmt.
     def visitStmt(self, ctx:logo3dParser.StmtContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by logo3dParser#color.
+    def visitColor(self, ctx:logo3dParser.ColorContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by logo3dParser#home.
+    def visitHome(self, ctx:logo3dParser.HomeContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by logo3dParser#show.
+    def visitShow(self, ctx:logo3dParser.ShowContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by logo3dParser#hide.
+    def visitHide(self, ctx:logo3dParser.HideContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by logo3dParser#forward.
+    def visitForward(self, ctx:logo3dParser.ForwardContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by logo3dParser#backward.
+    def visitBackward(self, ctx:logo3dParser.BackwardContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by logo3dParser#up.
+    def visitUp(self, ctx:logo3dParser.UpContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by logo3dParser#down.
+    def visitDown(self, ctx:logo3dParser.DownContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by logo3dParser#left.
+    def visitLeft(self, ctx:logo3dParser.LeftContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by logo3dParser#right.
+    def visitRight(self, ctx:logo3dParser.RightContext):
         return self.visitChildren(ctx)
 
 

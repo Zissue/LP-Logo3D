@@ -11,87 +11,133 @@ else:
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3)")
-        buf.write("\u00cc\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
+        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\63")
+        buf.write("\u0127\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
         buf.write("\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\4\r\t\r\4\16")
-        buf.write("\t\16\3\2\7\2\36\n\2\f\2\16\2!\13\2\3\2\3\2\3\3\3\3\3")
-        buf.write("\3\3\3\3\3\3\3\7\3+\n\3\f\3\16\3.\13\3\5\3\60\n\3\3\3")
-        buf.write("\3\3\3\3\6\3\65\n\3\r\3\16\3\66\3\3\3\3\3\4\3\4\3\4\3")
-        buf.write("\4\3\4\3\4\3\4\5\4B\n\4\3\5\3\5\3\5\3\5\3\6\3\6\3\6\3")
-        buf.write("\6\3\6\3\6\3\6\3\6\5\6P\n\6\3\6\3\6\3\6\3\6\3\6\3\6\3")
-        buf.write("\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\7\6d\n")
-        buf.write("\6\f\6\16\6g\13\6\3\7\3\7\3\7\3\7\3\7\3\7\3\7\5\7p\n\7")
-        buf.write("\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\7\7~")
-        buf.write("\n\7\f\7\16\7\u0081\13\7\3\b\3\b\3\b\3\t\3\t\3\t\3\n\3")
-        buf.write("\n\3\n\3\n\6\n\u008d\n\n\r\n\16\n\u008e\3\n\3\n\3\n\3")
-        buf.write("\n\3\n\3\n\6\n\u0097\n\n\r\n\16\n\u0098\3\n\3\n\6\n\u009d")
-        buf.write("\n\n\r\n\16\n\u009e\3\n\3\n\5\n\u00a3\n\n\3\13\3\13\3")
-        buf.write("\13\3\13\6\13\u00a9\n\13\r\13\16\13\u00aa\3\13\3\13\3")
-        buf.write("\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\6\f\u00b7\n\f\r\f\16\f")
-        buf.write("\u00b8\3\f\3\f\3\r\3\r\3\r\3\r\3\r\3\16\3\16\3\16\7\16")
-        buf.write("\u00c5\n\16\f\16\16\16\u00c8\13\16\5\16\u00ca\n\16\3\16")
-        buf.write("\2\4\n\f\17\2\4\6\b\n\f\16\20\22\24\26\30\32\2\2\2\u00df")
-        buf.write("\2\37\3\2\2\2\4$\3\2\2\2\6A\3\2\2\2\bC\3\2\2\2\nO\3\2")
-        buf.write("\2\2\fo\3\2\2\2\16\u0082\3\2\2\2\20\u0085\3\2\2\2\22\u00a2")
-        buf.write("\3\2\2\2\24\u00a4\3\2\2\2\26\u00ae\3\2\2\2\30\u00bc\3")
-        buf.write("\2\2\2\32\u00c9\3\2\2\2\34\36\5\4\3\2\35\34\3\2\2\2\36")
-        buf.write("!\3\2\2\2\37\35\3\2\2\2\37 \3\2\2\2 \"\3\2\2\2!\37\3\2")
-        buf.write("\2\2\"#\7\2\2\3#\3\3\2\2\2$%\7\f\2\2%&\7\37\2\2&/\7\3")
-        buf.write("\2\2\',\7\37\2\2()\7\'\2\2)+\7\37\2\2*(\3\2\2\2+.\3\2")
-        buf.write("\2\2,*\3\2\2\2,-\3\2\2\2-\60\3\2\2\2.,\3\2\2\2/\'\3\2")
-        buf.write("\2\2/\60\3\2\2\2\60\61\3\2\2\2\61\62\7\4\2\2\62\64\7\r")
-        buf.write("\2\2\63\65\5\6\4\2\64\63\3\2\2\2\65\66\3\2\2\2\66\64\3")
-        buf.write("\2\2\2\66\67\3\2\2\2\678\3\2\2\289\7\16\2\29\5\3\2\2\2")
-        buf.write(":B\5\24\13\2;B\5\26\f\2<B\5\b\5\2=B\5\16\b\2>B\5\20\t")
-        buf.write("\2?B\5\22\n\2@B\5\30\r\2A:\3\2\2\2A;\3\2\2\2A<\3\2\2\2")
-        buf.write("A=\3\2\2\2A>\3\2\2\2A?\3\2\2\2A@\3\2\2\2B\7\3\2\2\2CD")
-        buf.write("\7\37\2\2DE\7\5\2\2EF\5\n\6\2F\t\3\2\2\2GH\b\6\1\2HI\7")
-        buf.write("\3\2\2IJ\5\n\6\2JK\7\4\2\2KP\3\2\2\2LP\5\f\7\2MP\7\32")
-        buf.write("\2\2NP\7\31\2\2OG\3\2\2\2OL\3\2\2\2OM\3\2\2\2ON\3\2\2")
-        buf.write("\2Pe\3\2\2\2QR\f\13\2\2RS\7\6\2\2Sd\5\n\6\fTU\f\n\2\2")
-        buf.write("UV\7\7\2\2Vd\5\n\6\13WX\f\t\2\2XY\7\b\2\2Yd\5\n\6\nZ[")
-        buf.write("\f\b\2\2[\\\7\t\2\2\\d\5\n\6\t]^\f\7\2\2^_\7\n\2\2_d\5")
-        buf.write("\n\6\b`a\f\6\2\2ab\7\13\2\2bd\5\n\6\7cQ\3\2\2\2cT\3\2")
-        buf.write("\2\2cW\3\2\2\2cZ\3\2\2\2c]\3\2\2\2c`\3\2\2\2dg\3\2\2\2")
-        buf.write("ec\3\2\2\2ef\3\2\2\2f\13\3\2\2\2ge\3\2\2\2hi\b\7\1\2i")
-        buf.write("j\7\3\2\2jk\5\f\7\2kl\7\4\2\2lp\3\2\2\2mp\7 \2\2np\7\37")
-        buf.write("\2\2oh\3\2\2\2om\3\2\2\2on\3\2\2\2p\177\3\2\2\2qr\f\b")
-        buf.write("\2\2rs\7\33\2\2s~\5\f\7\ttu\f\7\2\2uv\7\34\2\2v~\5\f\7")
-        buf.write("\bwx\f\6\2\2xy\7\35\2\2y~\5\f\7\7z{\f\5\2\2{|\7\36\2\2")
-        buf.write("|~\5\f\7\6}q\3\2\2\2}t\3\2\2\2}w\3\2\2\2}z\3\2\2\2~\u0081")
-        buf.write("\3\2\2\2\177}\3\2\2\2\177\u0080\3\2\2\2\u0080\r\3\2\2")
-        buf.write("\2\u0081\177\3\2\2\2\u0082\u0083\7\27\2\2\u0083\u0084")
-        buf.write("\7\37\2\2\u0084\17\3\2\2\2\u0085\u0086\7\30\2\2\u0086")
-        buf.write("\u0087\5\n\6\2\u0087\21\3\2\2\2\u0088\u0089\7\17\2\2\u0089")
-        buf.write("\u008a\5\n\6\2\u008a\u008c\7\20\2\2\u008b\u008d\5\6\4")
-        buf.write("\2\u008c\u008b\3\2\2\2\u008d\u008e\3\2\2\2\u008e\u008c")
-        buf.write("\3\2\2\2\u008e\u008f\3\2\2\2\u008f\u0090\3\2\2\2\u0090")
-        buf.write("\u0091\7\16\2\2\u0091\u00a3\3\2\2\2\u0092\u0093\7\17\2")
-        buf.write("\2\u0093\u0094\5\n\6\2\u0094\u0096\7\20\2\2\u0095\u0097")
-        buf.write("\5\6\4\2\u0096\u0095\3\2\2\2\u0097\u0098\3\2\2\2\u0098")
-        buf.write("\u0096\3\2\2\2\u0098\u0099\3\2\2\2\u0099\u009a\3\2\2\2")
-        buf.write("\u009a\u009c\7\21\2\2\u009b\u009d\5\6\4\2\u009c\u009b")
-        buf.write("\3\2\2\2\u009d\u009e\3\2\2\2\u009e\u009c\3\2\2\2\u009e")
-        buf.write("\u009f\3\2\2\2\u009f\u00a0\3\2\2\2\u00a0\u00a1\7\16\2")
-        buf.write("\2\u00a1\u00a3\3\2\2\2\u00a2\u0088\3\2\2\2\u00a2\u0092")
-        buf.write("\3\2\2\2\u00a3\23\3\2\2\2\u00a4\u00a5\7\22\2\2\u00a5\u00a6")
-        buf.write("\5\n\6\2\u00a6\u00a8\7\23\2\2\u00a7\u00a9\5\6\4\2\u00a8")
-        buf.write("\u00a7\3\2\2\2\u00a9\u00aa\3\2\2\2\u00aa\u00a8\3\2\2\2")
-        buf.write("\u00aa\u00ab\3\2\2\2\u00ab\u00ac\3\2\2\2\u00ac\u00ad\7")
-        buf.write("\16\2\2\u00ad\25\3\2\2\2\u00ae\u00af\7\24\2\2\u00af\u00b0")
-        buf.write("\7\37\2\2\u00b0\u00b1\7\25\2\2\u00b1\u00b2\5\n\6\2\u00b2")
-        buf.write("\u00b3\7\26\2\2\u00b3\u00b4\5\n\6\2\u00b4\u00b6\7\23\2")
-        buf.write("\2\u00b5\u00b7\5\6\4\2\u00b6\u00b5\3\2\2\2\u00b7\u00b8")
-        buf.write("\3\2\2\2\u00b8\u00b6\3\2\2\2\u00b8\u00b9\3\2\2\2\u00b9")
-        buf.write("\u00ba\3\2\2\2\u00ba\u00bb\7\16\2\2\u00bb\27\3\2\2\2\u00bc")
-        buf.write("\u00bd\7\37\2\2\u00bd\u00be\7\3\2\2\u00be\u00bf\5\32\16")
-        buf.write("\2\u00bf\u00c0\7\4\2\2\u00c0\31\3\2\2\2\u00c1\u00c6\5")
-        buf.write("\n\6\2\u00c2\u00c3\7\'\2\2\u00c3\u00c5\5\n\6\2\u00c4\u00c2")
-        buf.write("\3\2\2\2\u00c5\u00c8\3\2\2\2\u00c6\u00c4\3\2\2\2\u00c6")
-        buf.write("\u00c7\3\2\2\2\u00c7\u00ca\3\2\2\2\u00c8\u00c6\3\2\2\2")
-        buf.write("\u00c9\u00c1\3\2\2\2\u00c9\u00ca\3\2\2\2\u00ca\33\3\2")
-        buf.write("\2\2\25\37,/\66AOceo}\177\u008e\u0098\u009e\u00a2\u00aa")
-        buf.write("\u00b8\u00c6\u00c9")
+        buf.write("\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22\4\23\t\23")
+        buf.write("\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31")
+        buf.write("\t\31\4\32\t\32\4\33\t\33\3\2\7\28\n\2\f\2\16\2;\13\2")
+        buf.write("\3\2\3\2\3\3\3\3\3\3\3\3\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3")
+        buf.write("\5\3\5\3\5\7\5M\n\5\f\5\16\5P\13\5\5\5R\n\5\3\6\6\6U\n")
+        buf.write("\6\r\6\16\6V\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3")
+        buf.write("\7\3\7\3\7\3\7\3\7\3\7\3\7\5\7j\n\7\3\b\3\b\3\b\3\b\3")
+        buf.write("\b\3\b\3\b\3\b\3\b\3\t\3\t\3\t\3\t\3\n\3\n\3\n\3\n\3\13")
+        buf.write("\3\13\3\13\3\13\3\f\3\f\3\f\3\f\3\f\3\r\3\r\3\r\3\r\3")
+        buf.write("\r\3\16\3\16\3\16\3\16\3\16\3\17\3\17\3\17\3\17\3\17\3")
+        buf.write("\20\3\20\3\20\3\20\3\20\3\21\3\21\3\21\3\21\3\21\3\22")
+        buf.write("\3\22\3\22\3\22\3\23\3\23\3\23\3\23\3\23\3\23\3\23\3\23")
+        buf.write("\5\23\u00ab\n\23\3\23\3\23\3\23\3\23\3\23\3\23\3\23\3")
+        buf.write("\23\3\23\3\23\3\23\3\23\3\23\3\23\3\23\3\23\3\23\3\23")
+        buf.write("\7\23\u00bf\n\23\f\23\16\23\u00c2\13\23\3\24\3\24\3\24")
+        buf.write("\3\24\3\24\3\24\3\24\5\24\u00cb\n\24\3\24\3\24\3\24\3")
+        buf.write("\24\3\24\3\24\3\24\3\24\3\24\3\24\3\24\3\24\7\24\u00d9")
+        buf.write("\n\24\f\24\16\24\u00dc\13\24\3\25\3\25\3\25\3\26\3\26")
+        buf.write("\3\26\3\27\3\27\3\27\3\27\6\27\u00e8\n\27\r\27\16\27\u00e9")
+        buf.write("\3\27\3\27\3\27\3\27\3\27\3\27\6\27\u00f2\n\27\r\27\16")
+        buf.write("\27\u00f3\3\27\3\27\6\27\u00f8\n\27\r\27\16\27\u00f9\3")
+        buf.write("\27\3\27\5\27\u00fe\n\27\3\30\3\30\3\30\3\30\6\30\u0104")
+        buf.write("\n\30\r\30\16\30\u0105\3\30\3\30\3\31\3\31\3\31\3\31\3")
+        buf.write("\31\3\31\3\31\3\31\6\31\u0112\n\31\r\31\16\31\u0113\3")
+        buf.write("\31\3\31\3\32\3\32\3\32\3\32\3\32\3\33\3\33\3\33\7\33")
+        buf.write("\u0120\n\33\f\33\16\33\u0123\13\33\5\33\u0125\n\33\3\33")
+        buf.write("\2\4$&\34\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&")
+        buf.write("(*,.\60\62\64\2\2\2\u0137\29\3\2\2\2\4>\3\2\2\2\6B\3\2")
+        buf.write("\2\2\bQ\3\2\2\2\nT\3\2\2\2\fi\3\2\2\2\16k\3\2\2\2\20t")
+        buf.write("\3\2\2\2\22x\3\2\2\2\24|\3\2\2\2\26\u0080\3\2\2\2\30\u0085")
+        buf.write("\3\2\2\2\32\u008a\3\2\2\2\34\u008f\3\2\2\2\36\u0094\3")
+        buf.write("\2\2\2 \u0099\3\2\2\2\"\u009e\3\2\2\2$\u00aa\3\2\2\2&")
+        buf.write("\u00ca\3\2\2\2(\u00dd\3\2\2\2*\u00e0\3\2\2\2,\u00fd\3")
+        buf.write("\2\2\2.\u00ff\3\2\2\2\60\u0109\3\2\2\2\62\u0117\3\2\2")
+        buf.write("\2\64\u0124\3\2\2\2\668\5\4\3\2\67\66\3\2\2\28;\3\2\2")
+        buf.write("\29\67\3\2\2\29:\3\2\2\2:<\3\2\2\2;9\3\2\2\2<=\7\2\2\3")
+        buf.write("=\3\3\2\2\2>?\5\6\4\2?@\5\n\6\2@A\7\30\2\2A\5\3\2\2\2")
+        buf.write("BC\7\26\2\2CD\7)\2\2DE\7\r\2\2EF\5\b\5\2FG\7\16\2\2GH")
+        buf.write("\7\27\2\2H\7\3\2\2\2IN\7)\2\2JK\7\61\2\2KM\7)\2\2LJ\3")
+        buf.write("\2\2\2MP\3\2\2\2NL\3\2\2\2NO\3\2\2\2OR\3\2\2\2PN\3\2\2")
+        buf.write("\2QI\3\2\2\2QR\3\2\2\2R\t\3\2\2\2SU\5\f\7\2TS\3\2\2\2")
+        buf.write("UV\3\2\2\2VT\3\2\2\2VW\3\2\2\2W\13\3\2\2\2Xj\5.\30\2Y")
+        buf.write("j\5\60\31\2Zj\5\"\22\2[j\5(\25\2\\j\5*\26\2]j\5,\27\2")
+        buf.write("^j\5\62\32\2_j\5\16\b\2`j\5\20\t\2aj\5\22\n\2bj\5\24\13")
+        buf.write("\2cj\5\26\f\2dj\5\30\r\2ej\5\32\16\2fj\5\34\17\2gj\5\36")
+        buf.write("\20\2hj\5 \21\2iX\3\2\2\2iY\3\2\2\2iZ\3\2\2\2i[\3\2\2")
+        buf.write("\2i\\\3\2\2\2i]\3\2\2\2i^\3\2\2\2i_\3\2\2\2i`\3\2\2\2")
+        buf.write("ia\3\2\2\2ib\3\2\2\2ic\3\2\2\2id\3\2\2\2ie\3\2\2\2if\3")
+        buf.write("\2\2\2ig\3\2\2\2ih\3\2\2\2j\r\3\2\2\2kl\7\3\2\2lm\7\r")
+        buf.write("\2\2mn\5$\23\2no\7\61\2\2op\5$\23\2pq\7\61\2\2qr\5$\23")
+        buf.write("\2rs\7\16\2\2s\17\3\2\2\2tu\7\4\2\2uv\7\r\2\2vw\7\16\2")
+        buf.write("\2w\21\3\2\2\2xy\7\5\2\2yz\7\r\2\2z{\7\16\2\2{\23\3\2")
+        buf.write("\2\2|}\7\6\2\2}~\7\r\2\2~\177\7\16\2\2\177\25\3\2\2\2")
+        buf.write("\u0080\u0081\7\7\2\2\u0081\u0082\7\r\2\2\u0082\u0083\5")
+        buf.write("$\23\2\u0083\u0084\7\16\2\2\u0084\27\3\2\2\2\u0085\u0086")
+        buf.write("\7\b\2\2\u0086\u0087\7\r\2\2\u0087\u0088\5$\23\2\u0088")
+        buf.write("\u0089\7\16\2\2\u0089\31\3\2\2\2\u008a\u008b\7\t\2\2\u008b")
+        buf.write("\u008c\7\r\2\2\u008c\u008d\5$\23\2\u008d\u008e\7\16\2")
+        buf.write("\2\u008e\33\3\2\2\2\u008f\u0090\7\n\2\2\u0090\u0091\7")
+        buf.write("\r\2\2\u0091\u0092\5$\23\2\u0092\u0093\7\16\2\2\u0093")
+        buf.write("\35\3\2\2\2\u0094\u0095\7\13\2\2\u0095\u0096\7\r\2\2\u0096")
+        buf.write("\u0097\5$\23\2\u0097\u0098\7\16\2\2\u0098\37\3\2\2\2\u0099")
+        buf.write("\u009a\7\f\2\2\u009a\u009b\7\r\2\2\u009b\u009c\5$\23\2")
+        buf.write("\u009c\u009d\7\16\2\2\u009d!\3\2\2\2\u009e\u009f\7)\2")
+        buf.write("\2\u009f\u00a0\7\17\2\2\u00a0\u00a1\5$\23\2\u00a1#\3\2")
+        buf.write("\2\2\u00a2\u00a3\b\23\1\2\u00a3\u00a4\7\r\2\2\u00a4\u00a5")
+        buf.write("\5$\23\2\u00a5\u00a6\7\16\2\2\u00a6\u00ab\3\2\2\2\u00a7")
+        buf.write("\u00ab\5&\24\2\u00a8\u00ab\7$\2\2\u00a9\u00ab\7#\2\2\u00aa")
+        buf.write("\u00a2\3\2\2\2\u00aa\u00a7\3\2\2\2\u00aa\u00a8\3\2\2\2")
+        buf.write("\u00aa\u00a9\3\2\2\2\u00ab\u00c0\3\2\2\2\u00ac\u00ad\f")
+        buf.write("\13\2\2\u00ad\u00ae\7\20\2\2\u00ae\u00bf\5$\23\f\u00af")
+        buf.write("\u00b0\f\n\2\2\u00b0\u00b1\7\21\2\2\u00b1\u00bf\5$\23")
+        buf.write("\13\u00b2\u00b3\f\t\2\2\u00b3\u00b4\7\22\2\2\u00b4\u00bf")
+        buf.write("\5$\23\n\u00b5\u00b6\f\b\2\2\u00b6\u00b7\7\23\2\2\u00b7")
+        buf.write("\u00bf\5$\23\t\u00b8\u00b9\f\7\2\2\u00b9\u00ba\7\24\2")
+        buf.write("\2\u00ba\u00bf\5$\23\b\u00bb\u00bc\f\6\2\2\u00bc\u00bd")
+        buf.write("\7\25\2\2\u00bd\u00bf\5$\23\7\u00be\u00ac\3\2\2\2\u00be")
+        buf.write("\u00af\3\2\2\2\u00be\u00b2\3\2\2\2\u00be\u00b5\3\2\2\2")
+        buf.write("\u00be\u00b8\3\2\2\2\u00be\u00bb\3\2\2\2\u00bf\u00c2\3")
+        buf.write("\2\2\2\u00c0\u00be\3\2\2\2\u00c0\u00c1\3\2\2\2\u00c1%")
+        buf.write("\3\2\2\2\u00c2\u00c0\3\2\2\2\u00c3\u00c4\b\24\1\2\u00c4")
+        buf.write("\u00c5\7\r\2\2\u00c5\u00c6\5&\24\2\u00c6\u00c7\7\16\2")
+        buf.write("\2\u00c7\u00cb\3\2\2\2\u00c8\u00cb\7*\2\2\u00c9\u00cb")
+        buf.write("\7)\2\2\u00ca\u00c3\3\2\2\2\u00ca\u00c8\3\2\2\2\u00ca")
+        buf.write("\u00c9\3\2\2\2\u00cb\u00da\3\2\2\2\u00cc\u00cd\f\b\2\2")
+        buf.write("\u00cd\u00ce\7%\2\2\u00ce\u00d9\5&\24\t\u00cf\u00d0\f")
+        buf.write("\7\2\2\u00d0\u00d1\7&\2\2\u00d1\u00d9\5&\24\b\u00d2\u00d3")
+        buf.write("\f\6\2\2\u00d3\u00d4\7\'\2\2\u00d4\u00d9\5&\24\7\u00d5")
+        buf.write("\u00d6\f\5\2\2\u00d6\u00d7\7(\2\2\u00d7\u00d9\5&\24\6")
+        buf.write("\u00d8\u00cc\3\2\2\2\u00d8\u00cf\3\2\2\2\u00d8\u00d2\3")
+        buf.write("\2\2\2\u00d8\u00d5\3\2\2\2\u00d9\u00dc\3\2\2\2\u00da\u00d8")
+        buf.write("\3\2\2\2\u00da\u00db\3\2\2\2\u00db\'\3\2\2\2\u00dc\u00da")
+        buf.write("\3\2\2\2\u00dd\u00de\7!\2\2\u00de\u00df\7)\2\2\u00df)")
+        buf.write("\3\2\2\2\u00e0\u00e1\7\"\2\2\u00e1\u00e2\5$\23\2\u00e2")
+        buf.write("+\3\2\2\2\u00e3\u00e4\7\31\2\2\u00e4\u00e5\5$\23\2\u00e5")
+        buf.write("\u00e7\7\32\2\2\u00e6\u00e8\5\f\7\2\u00e7\u00e6\3\2\2")
+        buf.write("\2\u00e8\u00e9\3\2\2\2\u00e9\u00e7\3\2\2\2\u00e9\u00ea")
+        buf.write("\3\2\2\2\u00ea\u00eb\3\2\2\2\u00eb\u00ec\7\30\2\2\u00ec")
+        buf.write("\u00fe\3\2\2\2\u00ed\u00ee\7\31\2\2\u00ee\u00ef\5$\23")
+        buf.write("\2\u00ef\u00f1\7\32\2\2\u00f0\u00f2\5\f\7\2\u00f1\u00f0")
+        buf.write("\3\2\2\2\u00f2\u00f3\3\2\2\2\u00f3\u00f1\3\2\2\2\u00f3")
+        buf.write("\u00f4\3\2\2\2\u00f4\u00f5\3\2\2\2\u00f5\u00f7\7\33\2")
+        buf.write("\2\u00f6\u00f8\5\f\7\2\u00f7\u00f6\3\2\2\2\u00f8\u00f9")
+        buf.write("\3\2\2\2\u00f9\u00f7\3\2\2\2\u00f9\u00fa\3\2\2\2\u00fa")
+        buf.write("\u00fb\3\2\2\2\u00fb\u00fc\7\30\2\2\u00fc\u00fe\3\2\2")
+        buf.write("\2\u00fd\u00e3\3\2\2\2\u00fd\u00ed\3\2\2\2\u00fe-\3\2")
+        buf.write("\2\2\u00ff\u0100\7\34\2\2\u0100\u0101\5$\23\2\u0101\u0103")
+        buf.write("\7\35\2\2\u0102\u0104\5\f\7\2\u0103\u0102\3\2\2\2\u0104")
+        buf.write("\u0105\3\2\2\2\u0105\u0103\3\2\2\2\u0105\u0106\3\2\2\2")
+        buf.write("\u0106\u0107\3\2\2\2\u0107\u0108\7\30\2\2\u0108/\3\2\2")
+        buf.write("\2\u0109\u010a\7\36\2\2\u010a\u010b\7)\2\2\u010b\u010c")
+        buf.write("\7\37\2\2\u010c\u010d\5$\23\2\u010d\u010e\7 \2\2\u010e")
+        buf.write("\u010f\5$\23\2\u010f\u0111\7\35\2\2\u0110\u0112\5\f\7")
+        buf.write("\2\u0111\u0110\3\2\2\2\u0112\u0113\3\2\2\2\u0113\u0111")
+        buf.write("\3\2\2\2\u0113\u0114\3\2\2\2\u0114\u0115\3\2\2\2\u0115")
+        buf.write("\u0116\7\30\2\2\u0116\61\3\2\2\2\u0117\u0118\7)\2\2\u0118")
+        buf.write("\u0119\7\r\2\2\u0119\u011a\5\64\33\2\u011a\u011b\7\16")
+        buf.write("\2\2\u011b\63\3\2\2\2\u011c\u0121\5$\23\2\u011d\u011e")
+        buf.write("\7\61\2\2\u011e\u0120\5$\23\2\u011f\u011d\3\2\2\2\u0120")
+        buf.write("\u0123\3\2\2\2\u0121\u011f\3\2\2\2\u0121\u0122\3\2\2\2")
+        buf.write("\u0122\u0125\3\2\2\2\u0123\u0121\3\2\2\2\u0124\u011c\3")
+        buf.write("\2\2\2\u0124\u0125\3\2\2\2\u0125\65\3\2\2\2\259NQVi\u00aa")
+        buf.write("\u00be\u00c0\u00ca\u00d8\u00da\u00e9\u00f3\u00f9\u00fd")
+        buf.write("\u0105\u0113\u0121\u0124")
         return buf.getvalue()
 
 
@@ -105,79 +151,109 @@ class logo3dParser ( Parser ):
 
     sharedContextCache = PredictionContextCache()
 
-    literalNames = [ "<INVALID>", "'('", "')'", "':='", "'=='", "'!='", 
-                     "'<'", "'>'", "'<='", "'>='", "'PROC'", "'IS'", "'END'", 
-                     "'IF'", "'THEN'", "'ELSE'", "'WHILE'", "'DO'", "'FOR'", 
-                     "'FROM'", "'TO'", "'>>'", "'<<'", "'False'", "'True'", 
-                     "'*'", "'/'", "'+'", "'-'", "<INVALID>", "<INVALID>", 
+    literalNames = [ "<INVALID>", "'color'", "'home'", "'show'", "'hide'", 
+                     "'forward'", "'backward'", "'up'", "'down'", "'left'", 
+                     "'right'", "'('", "')'", "':='", "'=='", "'!='", "'<'", 
+                     "'>'", "'<='", "'>='", "'PROC'", "'IS'", "'END'", "'IF'", 
+                     "'THEN'", "'ELSE'", "'WHILE'", "'DO'", "'FOR'", "'FROM'", 
+                     "'TO'", "'>>'", "'<<'", "'False'", "'True'", "'*'", 
+                     "'/'", "'+'", "'-'", "<INVALID>", "<INVALID>", "<INVALID>", 
                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                     "<INVALID>", "<INVALID>", "','" ]
+                     "<INVALID>", "','" ]
 
-    symbolicNames = [ "<INVALID>", "LP", "RP", "ASGN", "EQ", "DIF", "LT", 
-                      "GT", "LTE", "GTE", "PROC", "IS", "END", "IF", "THEN", 
-                      "ELSE", "WHILE", "DO", "FOR", "FROM", "TO", "ROP", 
-                      "WOP", "FALSE", "TRUE", "MUL", "DIV", "ADD", "SUB", 
-                      "IDENT", "NUM", "INT", "FLOAT", "FLOATPART", "DIGIT", 
-                      "SMALLCHAR", "LINE_COMMENT", "COMMA", "WS", "EOL" ]
+    symbolicNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                      "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                      "<INVALID>", "<INVALID>", "<INVALID>", "LP", "RP", 
+                      "ASGN", "EQ", "DIF", "LT", "GT", "LTE", "GTE", "PROC", 
+                      "IS", "END", "IF", "THEN", "ELSE", "WHILE", "DO", 
+                      "FOR", "FROM", "TO", "ROP", "WOP", "FALSE", "TRUE", 
+                      "MUL", "DIV", "ADD", "SUB", "IDENT", "NUM", "INT", 
+                      "FLOAT", "FLOATPART", "DIGIT", "SMALLCHAR", "LINE_COMMENT", 
+                      "COMMA", "WS", "EOL" ]
 
     RULE_root = 0
     RULE_proceD = 1
-    RULE_stmt = 2
-    RULE_assignation = 3
-    RULE_expr = 4
-    RULE_numExpr = 5
-    RULE_read = 6
-    RULE_write = 7
-    RULE_conditional = 8
-    RULE_while_it = 9
-    RULE_for_it = 10
-    RULE_invocation = 11
-    RULE_argsPassed = 12
+    RULE_funcHeader = 2
+    RULE_funcParam = 3
+    RULE_funcBody = 4
+    RULE_stmt = 5
+    RULE_color = 6
+    RULE_home = 7
+    RULE_show = 8
+    RULE_hide = 9
+    RULE_forward = 10
+    RULE_backward = 11
+    RULE_up = 12
+    RULE_down = 13
+    RULE_left = 14
+    RULE_right = 15
+    RULE_assignation = 16
+    RULE_expr = 17
+    RULE_numExpr = 18
+    RULE_read = 19
+    RULE_write = 20
+    RULE_conditional = 21
+    RULE_while_it = 22
+    RULE_for_it = 23
+    RULE_invocation = 24
+    RULE_argsPassed = 25
 
-    ruleNames =  [ "root", "proceD", "stmt", "assignation", "expr", "numExpr", 
-                   "read", "write", "conditional", "while_it", "for_it", 
-                   "invocation", "argsPassed" ]
+    ruleNames =  [ "root", "proceD", "funcHeader", "funcParam", "funcBody", 
+                   "stmt", "color", "home", "show", "hide", "forward", "backward", 
+                   "up", "down", "left", "right", "assignation", "expr", 
+                   "numExpr", "read", "write", "conditional", "while_it", 
+                   "for_it", "invocation", "argsPassed" ]
 
     EOF = Token.EOF
-    LP=1
-    RP=2
-    ASGN=3
-    EQ=4
-    DIF=5
-    LT=6
-    GT=7
-    LTE=8
-    GTE=9
-    PROC=10
-    IS=11
-    END=12
-    IF=13
-    THEN=14
-    ELSE=15
-    WHILE=16
-    DO=17
-    FOR=18
-    FROM=19
-    TO=20
-    ROP=21
-    WOP=22
-    FALSE=23
-    TRUE=24
-    MUL=25
-    DIV=26
-    ADD=27
-    SUB=28
-    IDENT=29
-    NUM=30
-    INT=31
-    FLOAT=32
-    FLOATPART=33
-    DIGIT=34
-    SMALLCHAR=35
-    LINE_COMMENT=36
-    COMMA=37
-    WS=38
-    EOL=39
+    T__0=1
+    T__1=2
+    T__2=3
+    T__3=4
+    T__4=5
+    T__5=6
+    T__6=7
+    T__7=8
+    T__8=9
+    T__9=10
+    LP=11
+    RP=12
+    ASGN=13
+    EQ=14
+    DIF=15
+    LT=16
+    GT=17
+    LTE=18
+    GTE=19
+    PROC=20
+    IS=21
+    END=22
+    IF=23
+    THEN=24
+    ELSE=25
+    WHILE=26
+    DO=27
+    FOR=28
+    FROM=29
+    TO=30
+    ROP=31
+    WOP=32
+    FALSE=33
+    TRUE=34
+    MUL=35
+    DIV=36
+    ADD=37
+    SUB=38
+    IDENT=39
+    NUM=40
+    INT=41
+    FLOAT=42
+    FLOATPART=43
+    DIGIT=44
+    SMALLCHAR=45
+    LINE_COMMENT=46
+    COMMA=47
+    WS=48
+    EOL=49
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
@@ -223,17 +299,17 @@ class logo3dParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 29
+            self.state = 55
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==logo3dParser.PROC:
-                self.state = 26
+                self.state = 52
                 self.proceD()
-                self.state = 31
+                self.state = 57
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 32
+            self.state = 58
             self.match(logo3dParser.EOF)
         except RecognitionException as re:
             localctx.exception = re
@@ -250,39 +326,16 @@ class logo3dParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def PROC(self):
-            return self.getToken(logo3dParser.PROC, 0)
+        def funcHeader(self):
+            return self.getTypedRuleContext(logo3dParser.FuncHeaderContext,0)
 
-        def IDENT(self, i:int=None):
-            if i is None:
-                return self.getTokens(logo3dParser.IDENT)
-            else:
-                return self.getToken(logo3dParser.IDENT, i)
 
-        def LP(self):
-            return self.getToken(logo3dParser.LP, 0)
+        def funcBody(self):
+            return self.getTypedRuleContext(logo3dParser.FuncBodyContext,0)
 
-        def RP(self):
-            return self.getToken(logo3dParser.RP, 0)
-
-        def IS(self):
-            return self.getToken(logo3dParser.IS, 0)
 
         def END(self):
             return self.getToken(logo3dParser.END, 0)
-
-        def stmt(self, i:int=None):
-            if i is None:
-                return self.getTypedRuleContexts(logo3dParser.StmtContext)
-            else:
-                return self.getTypedRuleContext(logo3dParser.StmtContext,i)
-
-
-        def COMMA(self, i:int=None):
-            if i is None:
-                return self.getTokens(logo3dParser.COMMA)
-            else:
-                return self.getToken(logo3dParser.COMMA, i)
 
         def getRuleIndex(self):
             return logo3dParser.RULE_proceD
@@ -300,53 +353,197 @@ class logo3dParser ( Parser ):
 
         localctx = logo3dParser.ProceDContext(self, self._ctx, self.state)
         self.enterRule(localctx, 2, self.RULE_proceD)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 60
+            self.funcHeader()
+            self.state = 61
+            self.funcBody()
+            self.state = 62
+            self.match(logo3dParser.END)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class FuncHeaderContext(ParserRuleContext):
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def PROC(self):
+            return self.getToken(logo3dParser.PROC, 0)
+
+        def IDENT(self):
+            return self.getToken(logo3dParser.IDENT, 0)
+
+        def LP(self):
+            return self.getToken(logo3dParser.LP, 0)
+
+        def funcParam(self):
+            return self.getTypedRuleContext(logo3dParser.FuncParamContext,0)
+
+
+        def RP(self):
+            return self.getToken(logo3dParser.RP, 0)
+
+        def IS(self):
+            return self.getToken(logo3dParser.IS, 0)
+
+        def getRuleIndex(self):
+            return logo3dParser.RULE_funcHeader
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitFuncHeader" ):
+                return visitor.visitFuncHeader(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def funcHeader(self):
+
+        localctx = logo3dParser.FuncHeaderContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 4, self.RULE_funcHeader)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 64
+            self.match(logo3dParser.PROC)
+            self.state = 65
+            self.match(logo3dParser.IDENT)
+            self.state = 66
+            self.match(logo3dParser.LP)
+            self.state = 67
+            self.funcParam()
+            self.state = 68
+            self.match(logo3dParser.RP)
+            self.state = 69
+            self.match(logo3dParser.IS)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class FuncParamContext(ParserRuleContext):
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def IDENT(self, i:int=None):
+            if i is None:
+                return self.getTokens(logo3dParser.IDENT)
+            else:
+                return self.getToken(logo3dParser.IDENT, i)
+
+        def COMMA(self, i:int=None):
+            if i is None:
+                return self.getTokens(logo3dParser.COMMA)
+            else:
+                return self.getToken(logo3dParser.COMMA, i)
+
+        def getRuleIndex(self):
+            return logo3dParser.RULE_funcParam
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitFuncParam" ):
+                return visitor.visitFuncParam(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def funcParam(self):
+
+        localctx = logo3dParser.FuncParamContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 6, self.RULE_funcParam)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 34
-            self.match(logo3dParser.PROC)
-            self.state = 35
-            self.match(logo3dParser.IDENT)
-            self.state = 36
-            self.match(logo3dParser.LP)
-            self.state = 45
+            self.state = 79
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==logo3dParser.IDENT:
-                self.state = 37
+                self.state = 71
                 self.match(logo3dParser.IDENT)
-                self.state = 42
+                self.state = 76
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while _la==logo3dParser.COMMA:
-                    self.state = 38
+                    self.state = 72
                     self.match(logo3dParser.COMMA)
-                    self.state = 39
+                    self.state = 73
                     self.match(logo3dParser.IDENT)
-                    self.state = 44
+                    self.state = 78
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
 
 
-            self.state = 47
-            self.match(logo3dParser.RP)
-            self.state = 48
-            self.match(logo3dParser.IS)
-            self.state = 50 
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class FuncBodyContext(ParserRuleContext):
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def stmt(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(logo3dParser.StmtContext)
+            else:
+                return self.getTypedRuleContext(logo3dParser.StmtContext,i)
+
+
+        def getRuleIndex(self):
+            return logo3dParser.RULE_funcBody
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitFuncBody" ):
+                return visitor.visitFuncBody(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def funcBody(self):
+
+        localctx = logo3dParser.FuncBodyContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 8, self.RULE_funcBody)
+        self._la = 0 # Token type
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 82 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 49
+                self.state = 81
                 self.stmt()
-                self.state = 52 
+                self.state = 84 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << logo3dParser.IF) | (1 << logo3dParser.WHILE) | (1 << logo3dParser.FOR) | (1 << logo3dParser.ROP) | (1 << logo3dParser.WOP) | (1 << logo3dParser.IDENT))) != 0)):
+                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << logo3dParser.T__0) | (1 << logo3dParser.T__1) | (1 << logo3dParser.T__2) | (1 << logo3dParser.T__3) | (1 << logo3dParser.T__4) | (1 << logo3dParser.T__5) | (1 << logo3dParser.T__6) | (1 << logo3dParser.T__7) | (1 << logo3dParser.T__8) | (1 << logo3dParser.T__9) | (1 << logo3dParser.IF) | (1 << logo3dParser.WHILE) | (1 << logo3dParser.FOR) | (1 << logo3dParser.ROP) | (1 << logo3dParser.WOP) | (1 << logo3dParser.IDENT))) != 0)):
                     break
 
-            self.state = 54
-            self.match(logo3dParser.END)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -390,6 +587,46 @@ class logo3dParser ( Parser ):
             return self.getTypedRuleContext(logo3dParser.InvocationContext,0)
 
 
+        def color(self):
+            return self.getTypedRuleContext(logo3dParser.ColorContext,0)
+
+
+        def home(self):
+            return self.getTypedRuleContext(logo3dParser.HomeContext,0)
+
+
+        def show(self):
+            return self.getTypedRuleContext(logo3dParser.ShowContext,0)
+
+
+        def hide(self):
+            return self.getTypedRuleContext(logo3dParser.HideContext,0)
+
+
+        def forward(self):
+            return self.getTypedRuleContext(logo3dParser.ForwardContext,0)
+
+
+        def backward(self):
+            return self.getTypedRuleContext(logo3dParser.BackwardContext,0)
+
+
+        def up(self):
+            return self.getTypedRuleContext(logo3dParser.UpContext,0)
+
+
+        def down(self):
+            return self.getTypedRuleContext(logo3dParser.DownContext,0)
+
+
+        def left(self):
+            return self.getTypedRuleContext(logo3dParser.LeftContext,0)
+
+
+        def right(self):
+            return self.getTypedRuleContext(logo3dParser.RightContext,0)
+
+
         def getRuleIndex(self):
             return logo3dParser.RULE_stmt
 
@@ -405,54 +642,623 @@ class logo3dParser ( Parser ):
     def stmt(self):
 
         localctx = logo3dParser.StmtContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 4, self.RULE_stmt)
+        self.enterRule(localctx, 10, self.RULE_stmt)
         try:
-            self.state = 63
+            self.state = 103
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,4,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 56
+                self.state = 86
                 self.while_it()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 57
+                self.state = 87
                 self.for_it()
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 58
+                self.state = 88
                 self.assignation()
                 pass
 
             elif la_ == 4:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 59
+                self.state = 89
                 self.read()
                 pass
 
             elif la_ == 5:
                 self.enterOuterAlt(localctx, 5)
-                self.state = 60
+                self.state = 90
                 self.write()
                 pass
 
             elif la_ == 6:
                 self.enterOuterAlt(localctx, 6)
-                self.state = 61
+                self.state = 91
                 self.conditional()
                 pass
 
             elif la_ == 7:
                 self.enterOuterAlt(localctx, 7)
-                self.state = 62
+                self.state = 92
                 self.invocation()
                 pass
 
+            elif la_ == 8:
+                self.enterOuterAlt(localctx, 8)
+                self.state = 93
+                self.color()
+                pass
 
+            elif la_ == 9:
+                self.enterOuterAlt(localctx, 9)
+                self.state = 94
+                self.home()
+                pass
+
+            elif la_ == 10:
+                self.enterOuterAlt(localctx, 10)
+                self.state = 95
+                self.show()
+                pass
+
+            elif la_ == 11:
+                self.enterOuterAlt(localctx, 11)
+                self.state = 96
+                self.hide()
+                pass
+
+            elif la_ == 12:
+                self.enterOuterAlt(localctx, 12)
+                self.state = 97
+                self.forward()
+                pass
+
+            elif la_ == 13:
+                self.enterOuterAlt(localctx, 13)
+                self.state = 98
+                self.backward()
+                pass
+
+            elif la_ == 14:
+                self.enterOuterAlt(localctx, 14)
+                self.state = 99
+                self.up()
+                pass
+
+            elif la_ == 15:
+                self.enterOuterAlt(localctx, 15)
+                self.state = 100
+                self.down()
+                pass
+
+            elif la_ == 16:
+                self.enterOuterAlt(localctx, 16)
+                self.state = 101
+                self.left()
+                pass
+
+            elif la_ == 17:
+                self.enterOuterAlt(localctx, 17)
+                self.state = 102
+                self.right()
+                pass
+
+
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class ColorContext(ParserRuleContext):
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def LP(self):
+            return self.getToken(logo3dParser.LP, 0)
+
+        def expr(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(logo3dParser.ExprContext)
+            else:
+                return self.getTypedRuleContext(logo3dParser.ExprContext,i)
+
+
+        def COMMA(self, i:int=None):
+            if i is None:
+                return self.getTokens(logo3dParser.COMMA)
+            else:
+                return self.getToken(logo3dParser.COMMA, i)
+
+        def RP(self):
+            return self.getToken(logo3dParser.RP, 0)
+
+        def getRuleIndex(self):
+            return logo3dParser.RULE_color
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitColor" ):
+                return visitor.visitColor(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def color(self):
+
+        localctx = logo3dParser.ColorContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 12, self.RULE_color)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 105
+            self.match(logo3dParser.T__0)
+            self.state = 106
+            self.match(logo3dParser.LP)
+            self.state = 107
+            self.expr(0)
+            self.state = 108
+            self.match(logo3dParser.COMMA)
+            self.state = 109
+            self.expr(0)
+            self.state = 110
+            self.match(logo3dParser.COMMA)
+            self.state = 111
+            self.expr(0)
+            self.state = 112
+            self.match(logo3dParser.RP)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class HomeContext(ParserRuleContext):
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def LP(self):
+            return self.getToken(logo3dParser.LP, 0)
+
+        def RP(self):
+            return self.getToken(logo3dParser.RP, 0)
+
+        def getRuleIndex(self):
+            return logo3dParser.RULE_home
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitHome" ):
+                return visitor.visitHome(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def home(self):
+
+        localctx = logo3dParser.HomeContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 14, self.RULE_home)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 114
+            self.match(logo3dParser.T__1)
+            self.state = 115
+            self.match(logo3dParser.LP)
+            self.state = 116
+            self.match(logo3dParser.RP)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class ShowContext(ParserRuleContext):
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def LP(self):
+            return self.getToken(logo3dParser.LP, 0)
+
+        def RP(self):
+            return self.getToken(logo3dParser.RP, 0)
+
+        def getRuleIndex(self):
+            return logo3dParser.RULE_show
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitShow" ):
+                return visitor.visitShow(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def show(self):
+
+        localctx = logo3dParser.ShowContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 16, self.RULE_show)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 118
+            self.match(logo3dParser.T__2)
+            self.state = 119
+            self.match(logo3dParser.LP)
+            self.state = 120
+            self.match(logo3dParser.RP)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class HideContext(ParserRuleContext):
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def LP(self):
+            return self.getToken(logo3dParser.LP, 0)
+
+        def RP(self):
+            return self.getToken(logo3dParser.RP, 0)
+
+        def getRuleIndex(self):
+            return logo3dParser.RULE_hide
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitHide" ):
+                return visitor.visitHide(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def hide(self):
+
+        localctx = logo3dParser.HideContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 18, self.RULE_hide)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 122
+            self.match(logo3dParser.T__3)
+            self.state = 123
+            self.match(logo3dParser.LP)
+            self.state = 124
+            self.match(logo3dParser.RP)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class ForwardContext(ParserRuleContext):
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def LP(self):
+            return self.getToken(logo3dParser.LP, 0)
+
+        def expr(self):
+            return self.getTypedRuleContext(logo3dParser.ExprContext,0)
+
+
+        def RP(self):
+            return self.getToken(logo3dParser.RP, 0)
+
+        def getRuleIndex(self):
+            return logo3dParser.RULE_forward
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitForward" ):
+                return visitor.visitForward(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def forward(self):
+
+        localctx = logo3dParser.ForwardContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 20, self.RULE_forward)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 126
+            self.match(logo3dParser.T__4)
+            self.state = 127
+            self.match(logo3dParser.LP)
+            self.state = 128
+            self.expr(0)
+            self.state = 129
+            self.match(logo3dParser.RP)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class BackwardContext(ParserRuleContext):
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def LP(self):
+            return self.getToken(logo3dParser.LP, 0)
+
+        def expr(self):
+            return self.getTypedRuleContext(logo3dParser.ExprContext,0)
+
+
+        def RP(self):
+            return self.getToken(logo3dParser.RP, 0)
+
+        def getRuleIndex(self):
+            return logo3dParser.RULE_backward
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitBackward" ):
+                return visitor.visitBackward(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def backward(self):
+
+        localctx = logo3dParser.BackwardContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 22, self.RULE_backward)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 131
+            self.match(logo3dParser.T__5)
+            self.state = 132
+            self.match(logo3dParser.LP)
+            self.state = 133
+            self.expr(0)
+            self.state = 134
+            self.match(logo3dParser.RP)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class UpContext(ParserRuleContext):
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def LP(self):
+            return self.getToken(logo3dParser.LP, 0)
+
+        def expr(self):
+            return self.getTypedRuleContext(logo3dParser.ExprContext,0)
+
+
+        def RP(self):
+            return self.getToken(logo3dParser.RP, 0)
+
+        def getRuleIndex(self):
+            return logo3dParser.RULE_up
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitUp" ):
+                return visitor.visitUp(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def up(self):
+
+        localctx = logo3dParser.UpContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 24, self.RULE_up)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 136
+            self.match(logo3dParser.T__6)
+            self.state = 137
+            self.match(logo3dParser.LP)
+            self.state = 138
+            self.expr(0)
+            self.state = 139
+            self.match(logo3dParser.RP)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class DownContext(ParserRuleContext):
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def LP(self):
+            return self.getToken(logo3dParser.LP, 0)
+
+        def expr(self):
+            return self.getTypedRuleContext(logo3dParser.ExprContext,0)
+
+
+        def RP(self):
+            return self.getToken(logo3dParser.RP, 0)
+
+        def getRuleIndex(self):
+            return logo3dParser.RULE_down
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitDown" ):
+                return visitor.visitDown(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def down(self):
+
+        localctx = logo3dParser.DownContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 26, self.RULE_down)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 141
+            self.match(logo3dParser.T__7)
+            self.state = 142
+            self.match(logo3dParser.LP)
+            self.state = 143
+            self.expr(0)
+            self.state = 144
+            self.match(logo3dParser.RP)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class LeftContext(ParserRuleContext):
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def LP(self):
+            return self.getToken(logo3dParser.LP, 0)
+
+        def expr(self):
+            return self.getTypedRuleContext(logo3dParser.ExprContext,0)
+
+
+        def RP(self):
+            return self.getToken(logo3dParser.RP, 0)
+
+        def getRuleIndex(self):
+            return logo3dParser.RULE_left
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitLeft" ):
+                return visitor.visitLeft(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def left(self):
+
+        localctx = logo3dParser.LeftContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 28, self.RULE_left)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 146
+            self.match(logo3dParser.T__8)
+            self.state = 147
+            self.match(logo3dParser.LP)
+            self.state = 148
+            self.expr(0)
+            self.state = 149
+            self.match(logo3dParser.RP)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class RightContext(ParserRuleContext):
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def LP(self):
+            return self.getToken(logo3dParser.LP, 0)
+
+        def expr(self):
+            return self.getTypedRuleContext(logo3dParser.ExprContext,0)
+
+
+        def RP(self):
+            return self.getToken(logo3dParser.RP, 0)
+
+        def getRuleIndex(self):
+            return logo3dParser.RULE_right
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitRight" ):
+                return visitor.visitRight(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def right(self):
+
+        localctx = logo3dParser.RightContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 30, self.RULE_right)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 151
+            self.match(logo3dParser.T__9)
+            self.state = 152
+            self.match(logo3dParser.LP)
+            self.state = 153
+            self.expr(0)
+            self.state = 154
+            self.match(logo3dParser.RP)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -493,14 +1299,14 @@ class logo3dParser ( Parser ):
     def assignation(self):
 
         localctx = logo3dParser.AssignationContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 6, self.RULE_assignation)
+        self.enterRule(localctx, 32, self.RULE_assignation)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 65
+            self.state = 156
             self.match(logo3dParser.IDENT)
-            self.state = 66
+            self.state = 157
             self.match(logo3dParser.ASGN)
-            self.state = 67
+            self.state = 158
             self.expr(0)
         except RecognitionException as re:
             localctx.exception = re
@@ -574,40 +1380,40 @@ class logo3dParser ( Parser ):
         _parentState = self.state
         localctx = logo3dParser.ExprContext(self, self._ctx, _parentState)
         _prevctx = localctx
-        _startState = 8
-        self.enterRecursionRule(localctx, 8, self.RULE_expr, _p)
+        _startState = 34
+        self.enterRecursionRule(localctx, 34, self.RULE_expr, _p)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 77
+            self.state = 168
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,5,self._ctx)
             if la_ == 1:
-                self.state = 70
+                self.state = 161
                 self.match(logo3dParser.LP)
-                self.state = 71
+                self.state = 162
                 self.expr(0)
-                self.state = 72
+                self.state = 163
                 self.match(logo3dParser.RP)
                 pass
 
             elif la_ == 2:
-                self.state = 74
+                self.state = 165
                 self.numExpr(0)
                 pass
 
             elif la_ == 3:
-                self.state = 75
+                self.state = 166
                 self.match(logo3dParser.TRUE)
                 pass
 
             elif la_ == 4:
-                self.state = 76
+                self.state = 167
                 self.match(logo3dParser.FALSE)
                 pass
 
 
             self._ctx.stop = self._input.LT(-1)
-            self.state = 99
+            self.state = 190
             self._errHandler.sync(self)
             _alt = self._interp.adaptivePredict(self._input,7,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
@@ -615,89 +1421,89 @@ class logo3dParser ( Parser ):
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    self.state = 97
+                    self.state = 188
                     self._errHandler.sync(self)
                     la_ = self._interp.adaptivePredict(self._input,6,self._ctx)
                     if la_ == 1:
                         localctx = logo3dParser.ExprContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 79
+                        self.state = 170
                         if not self.precpred(self._ctx, 9):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 9)")
-                        self.state = 80
+                        self.state = 171
                         self.match(logo3dParser.EQ)
-                        self.state = 81
+                        self.state = 172
                         self.expr(10)
                         pass
 
                     elif la_ == 2:
                         localctx = logo3dParser.ExprContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 82
+                        self.state = 173
                         if not self.precpred(self._ctx, 8):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 8)")
-                        self.state = 83
+                        self.state = 174
                         self.match(logo3dParser.DIF)
-                        self.state = 84
+                        self.state = 175
                         self.expr(9)
                         pass
 
                     elif la_ == 3:
                         localctx = logo3dParser.ExprContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 85
+                        self.state = 176
                         if not self.precpred(self._ctx, 7):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 7)")
-                        self.state = 86
+                        self.state = 177
                         self.match(logo3dParser.LT)
-                        self.state = 87
+                        self.state = 178
                         self.expr(8)
                         pass
 
                     elif la_ == 4:
                         localctx = logo3dParser.ExprContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 88
+                        self.state = 179
                         if not self.precpred(self._ctx, 6):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 6)")
-                        self.state = 89
+                        self.state = 180
                         self.match(logo3dParser.GT)
-                        self.state = 90
+                        self.state = 181
                         self.expr(7)
                         pass
 
                     elif la_ == 5:
                         localctx = logo3dParser.ExprContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 91
+                        self.state = 182
                         if not self.precpred(self._ctx, 5):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 5)")
-                        self.state = 92
+                        self.state = 183
                         self.match(logo3dParser.LTE)
-                        self.state = 93
+                        self.state = 184
                         self.expr(6)
                         pass
 
                     elif la_ == 6:
                         localctx = logo3dParser.ExprContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 94
+                        self.state = 185
                         if not self.precpred(self._ctx, 4):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 4)")
-                        self.state = 95
+                        self.state = 186
                         self.match(logo3dParser.GTE)
-                        self.state = 96
+                        self.state = 187
                         self.expr(5)
                         pass
 
              
-                self.state = 101
+                self.state = 192
                 self._errHandler.sync(self)
                 _alt = self._interp.adaptivePredict(self._input,7,self._ctx)
 
@@ -763,34 +1569,34 @@ class logo3dParser ( Parser ):
         _parentState = self.state
         localctx = logo3dParser.NumExprContext(self, self._ctx, _parentState)
         _prevctx = localctx
-        _startState = 10
-        self.enterRecursionRule(localctx, 10, self.RULE_numExpr, _p)
+        _startState = 36
+        self.enterRecursionRule(localctx, 36, self.RULE_numExpr, _p)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 109
+            self.state = 200
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [logo3dParser.LP]:
-                self.state = 103
+                self.state = 194
                 self.match(logo3dParser.LP)
-                self.state = 104
+                self.state = 195
                 self.numExpr(0)
-                self.state = 105
+                self.state = 196
                 self.match(logo3dParser.RP)
                 pass
             elif token in [logo3dParser.NUM]:
-                self.state = 107
+                self.state = 198
                 self.match(logo3dParser.NUM)
                 pass
             elif token in [logo3dParser.IDENT]:
-                self.state = 108
+                self.state = 199
                 self.match(logo3dParser.IDENT)
                 pass
             else:
                 raise NoViableAltException(self)
 
             self._ctx.stop = self._input.LT(-1)
-            self.state = 125
+            self.state = 216
             self._errHandler.sync(self)
             _alt = self._interp.adaptivePredict(self._input,10,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
@@ -798,63 +1604,63 @@ class logo3dParser ( Parser ):
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    self.state = 123
+                    self.state = 214
                     self._errHandler.sync(self)
                     la_ = self._interp.adaptivePredict(self._input,9,self._ctx)
                     if la_ == 1:
                         localctx = logo3dParser.NumExprContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_numExpr)
-                        self.state = 111
+                        self.state = 202
                         if not self.precpred(self._ctx, 6):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 6)")
-                        self.state = 112
+                        self.state = 203
                         self.match(logo3dParser.MUL)
-                        self.state = 113
+                        self.state = 204
                         self.numExpr(7)
                         pass
 
                     elif la_ == 2:
                         localctx = logo3dParser.NumExprContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_numExpr)
-                        self.state = 114
+                        self.state = 205
                         if not self.precpred(self._ctx, 5):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 5)")
-                        self.state = 115
+                        self.state = 206
                         self.match(logo3dParser.DIV)
-                        self.state = 116
+                        self.state = 207
                         self.numExpr(6)
                         pass
 
                     elif la_ == 3:
                         localctx = logo3dParser.NumExprContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_numExpr)
-                        self.state = 117
+                        self.state = 208
                         if not self.precpred(self._ctx, 4):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 4)")
-                        self.state = 118
+                        self.state = 209
                         self.match(logo3dParser.ADD)
-                        self.state = 119
+                        self.state = 210
                         self.numExpr(5)
                         pass
 
                     elif la_ == 4:
                         localctx = logo3dParser.NumExprContext(self, _parentctx, _parentState)
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_numExpr)
-                        self.state = 120
+                        self.state = 211
                         if not self.precpred(self._ctx, 3):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 3)")
-                        self.state = 121
+                        self.state = 212
                         self.match(logo3dParser.SUB)
-                        self.state = 122
+                        self.state = 213
                         self.numExpr(4)
                         pass
 
              
-                self.state = 127
+                self.state = 218
                 self._errHandler.sync(self)
                 _alt = self._interp.adaptivePredict(self._input,10,self._ctx)
 
@@ -894,12 +1700,12 @@ class logo3dParser ( Parser ):
     def read(self):
 
         localctx = logo3dParser.ReadContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 12, self.RULE_read)
+        self.enterRule(localctx, 38, self.RULE_read)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 128
+            self.state = 219
             self.match(logo3dParser.ROP)
-            self.state = 129
+            self.state = 220
             self.match(logo3dParser.IDENT)
         except RecognitionException as re:
             localctx.exception = re
@@ -938,12 +1744,12 @@ class logo3dParser ( Parser ):
     def write(self):
 
         localctx = logo3dParser.WriteContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 14, self.RULE_write)
+        self.enterRule(localctx, 40, self.RULE_write)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 131
+            self.state = 222
             self.match(logo3dParser.WOP)
-            self.state = 132
+            self.state = 223
             self.expr(0)
         except RecognitionException as re:
             localctx.exception = re
@@ -998,71 +1804,71 @@ class logo3dParser ( Parser ):
     def conditional(self):
 
         localctx = logo3dParser.ConditionalContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 16, self.RULE_conditional)
+        self.enterRule(localctx, 42, self.RULE_conditional)
         self._la = 0 # Token type
         try:
-            self.state = 160
+            self.state = 251
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,14,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 134
+                self.state = 225
                 self.match(logo3dParser.IF)
-                self.state = 135
+                self.state = 226
                 self.expr(0)
-                self.state = 136
+                self.state = 227
                 self.match(logo3dParser.THEN)
-                self.state = 138 
+                self.state = 229 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while True:
-                    self.state = 137
+                    self.state = 228
                     self.stmt()
-                    self.state = 140 
+                    self.state = 231 
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
-                    if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << logo3dParser.IF) | (1 << logo3dParser.WHILE) | (1 << logo3dParser.FOR) | (1 << logo3dParser.ROP) | (1 << logo3dParser.WOP) | (1 << logo3dParser.IDENT))) != 0)):
+                    if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << logo3dParser.T__0) | (1 << logo3dParser.T__1) | (1 << logo3dParser.T__2) | (1 << logo3dParser.T__3) | (1 << logo3dParser.T__4) | (1 << logo3dParser.T__5) | (1 << logo3dParser.T__6) | (1 << logo3dParser.T__7) | (1 << logo3dParser.T__8) | (1 << logo3dParser.T__9) | (1 << logo3dParser.IF) | (1 << logo3dParser.WHILE) | (1 << logo3dParser.FOR) | (1 << logo3dParser.ROP) | (1 << logo3dParser.WOP) | (1 << logo3dParser.IDENT))) != 0)):
                         break
 
-                self.state = 142
+                self.state = 233
                 self.match(logo3dParser.END)
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 144
+                self.state = 235
                 self.match(logo3dParser.IF)
-                self.state = 145
+                self.state = 236
                 self.expr(0)
-                self.state = 146
+                self.state = 237
                 self.match(logo3dParser.THEN)
-                self.state = 148 
+                self.state = 239 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while True:
-                    self.state = 147
+                    self.state = 238
                     self.stmt()
-                    self.state = 150 
+                    self.state = 241 
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
-                    if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << logo3dParser.IF) | (1 << logo3dParser.WHILE) | (1 << logo3dParser.FOR) | (1 << logo3dParser.ROP) | (1 << logo3dParser.WOP) | (1 << logo3dParser.IDENT))) != 0)):
+                    if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << logo3dParser.T__0) | (1 << logo3dParser.T__1) | (1 << logo3dParser.T__2) | (1 << logo3dParser.T__3) | (1 << logo3dParser.T__4) | (1 << logo3dParser.T__5) | (1 << logo3dParser.T__6) | (1 << logo3dParser.T__7) | (1 << logo3dParser.T__8) | (1 << logo3dParser.T__9) | (1 << logo3dParser.IF) | (1 << logo3dParser.WHILE) | (1 << logo3dParser.FOR) | (1 << logo3dParser.ROP) | (1 << logo3dParser.WOP) | (1 << logo3dParser.IDENT))) != 0)):
                         break
 
-                self.state = 152
+                self.state = 243
                 self.match(logo3dParser.ELSE)
-                self.state = 154 
+                self.state = 245 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while True:
-                    self.state = 153
+                    self.state = 244
                     self.stmt()
-                    self.state = 156 
+                    self.state = 247 
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
-                    if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << logo3dParser.IF) | (1 << logo3dParser.WHILE) | (1 << logo3dParser.FOR) | (1 << logo3dParser.ROP) | (1 << logo3dParser.WOP) | (1 << logo3dParser.IDENT))) != 0)):
+                    if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << logo3dParser.T__0) | (1 << logo3dParser.T__1) | (1 << logo3dParser.T__2) | (1 << logo3dParser.T__3) | (1 << logo3dParser.T__4) | (1 << logo3dParser.T__5) | (1 << logo3dParser.T__6) | (1 << logo3dParser.T__7) | (1 << logo3dParser.T__8) | (1 << logo3dParser.T__9) | (1 << logo3dParser.IF) | (1 << logo3dParser.WHILE) | (1 << logo3dParser.FOR) | (1 << logo3dParser.ROP) | (1 << logo3dParser.WOP) | (1 << logo3dParser.IDENT))) != 0)):
                         break
 
-                self.state = 158
+                self.state = 249
                 self.match(logo3dParser.END)
                 pass
 
@@ -1117,29 +1923,29 @@ class logo3dParser ( Parser ):
     def while_it(self):
 
         localctx = logo3dParser.While_itContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 18, self.RULE_while_it)
+        self.enterRule(localctx, 44, self.RULE_while_it)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 162
+            self.state = 253
             self.match(logo3dParser.WHILE)
-            self.state = 163
+            self.state = 254
             self.expr(0)
-            self.state = 164
+            self.state = 255
             self.match(logo3dParser.DO)
-            self.state = 166 
+            self.state = 257 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 165
+                self.state = 256
                 self.stmt()
-                self.state = 168 
+                self.state = 259 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << logo3dParser.IF) | (1 << logo3dParser.WHILE) | (1 << logo3dParser.FOR) | (1 << logo3dParser.ROP) | (1 << logo3dParser.WOP) | (1 << logo3dParser.IDENT))) != 0)):
+                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << logo3dParser.T__0) | (1 << logo3dParser.T__1) | (1 << logo3dParser.T__2) | (1 << logo3dParser.T__3) | (1 << logo3dParser.T__4) | (1 << logo3dParser.T__5) | (1 << logo3dParser.T__6) | (1 << logo3dParser.T__7) | (1 << logo3dParser.T__8) | (1 << logo3dParser.T__9) | (1 << logo3dParser.IF) | (1 << logo3dParser.WHILE) | (1 << logo3dParser.FOR) | (1 << logo3dParser.ROP) | (1 << logo3dParser.WOP) | (1 << logo3dParser.IDENT))) != 0)):
                     break
 
-            self.state = 170
+            self.state = 261
             self.match(logo3dParser.END)
         except RecognitionException as re:
             localctx.exception = re
@@ -1203,37 +2009,37 @@ class logo3dParser ( Parser ):
     def for_it(self):
 
         localctx = logo3dParser.For_itContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 20, self.RULE_for_it)
+        self.enterRule(localctx, 46, self.RULE_for_it)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 172
+            self.state = 263
             self.match(logo3dParser.FOR)
-            self.state = 173
+            self.state = 264
             self.match(logo3dParser.IDENT)
-            self.state = 174
+            self.state = 265
             self.match(logo3dParser.FROM)
-            self.state = 175
+            self.state = 266
             self.expr(0)
-            self.state = 176
+            self.state = 267
             self.match(logo3dParser.TO)
-            self.state = 177
+            self.state = 268
             self.expr(0)
-            self.state = 178
+            self.state = 269
             self.match(logo3dParser.DO)
-            self.state = 180 
+            self.state = 271 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 179
+                self.state = 270
                 self.stmt()
-                self.state = 182 
+                self.state = 273 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << logo3dParser.IF) | (1 << logo3dParser.WHILE) | (1 << logo3dParser.FOR) | (1 << logo3dParser.ROP) | (1 << logo3dParser.WOP) | (1 << logo3dParser.IDENT))) != 0)):
+                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << logo3dParser.T__0) | (1 << logo3dParser.T__1) | (1 << logo3dParser.T__2) | (1 << logo3dParser.T__3) | (1 << logo3dParser.T__4) | (1 << logo3dParser.T__5) | (1 << logo3dParser.T__6) | (1 << logo3dParser.T__7) | (1 << logo3dParser.T__8) | (1 << logo3dParser.T__9) | (1 << logo3dParser.IF) | (1 << logo3dParser.WHILE) | (1 << logo3dParser.FOR) | (1 << logo3dParser.ROP) | (1 << logo3dParser.WOP) | (1 << logo3dParser.IDENT))) != 0)):
                     break
 
-            self.state = 184
+            self.state = 275
             self.match(logo3dParser.END)
         except RecognitionException as re:
             localctx.exception = re
@@ -1278,16 +2084,16 @@ class logo3dParser ( Parser ):
     def invocation(self):
 
         localctx = logo3dParser.InvocationContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 22, self.RULE_invocation)
+        self.enterRule(localctx, 48, self.RULE_invocation)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 186
+            self.state = 277
             self.match(logo3dParser.IDENT)
-            self.state = 187
+            self.state = 278
             self.match(logo3dParser.LP)
-            self.state = 188
+            self.state = 279
             self.argsPassed()
-            self.state = 189
+            self.state = 280
             self.match(logo3dParser.RP)
         except RecognitionException as re:
             localctx.exception = re
@@ -1332,25 +2138,25 @@ class logo3dParser ( Parser ):
     def argsPassed(self):
 
         localctx = logo3dParser.ArgsPassedContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 24, self.RULE_argsPassed)
+        self.enterRule(localctx, 50, self.RULE_argsPassed)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 199
+            self.state = 290
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << logo3dParser.LP) | (1 << logo3dParser.FALSE) | (1 << logo3dParser.TRUE) | (1 << logo3dParser.IDENT) | (1 << logo3dParser.NUM))) != 0):
-                self.state = 191
+                self.state = 282
                 self.expr(0)
-                self.state = 196
+                self.state = 287
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while _la==logo3dParser.COMMA:
-                    self.state = 192
+                    self.state = 283
                     self.match(logo3dParser.COMMA)
-                    self.state = 193
+                    self.state = 284
                     self.expr(0)
-                    self.state = 198
+                    self.state = 289
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
@@ -1369,8 +2175,8 @@ class logo3dParser ( Parser ):
     def sempred(self, localctx:RuleContext, ruleIndex:int, predIndex:int):
         if self._predicates == None:
             self._predicates = dict()
-        self._predicates[4] = self.expr_sempred
-        self._predicates[5] = self.numExpr_sempred
+        self._predicates[17] = self.expr_sempred
+        self._predicates[18] = self.numExpr_sempred
         pred = self._predicates.get(ruleIndex, None)
         if pred is None:
             raise Exception("No predicate with index:" + str(ruleIndex))
