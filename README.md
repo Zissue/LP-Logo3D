@@ -1,4 +1,4 @@
-# LP - Pràctica Logo3D
+# LP - Pràctica *Logo3D*
 
 Aquest és el meu projecte de Compiladors de l'asignatura de "Llenguatges de Programació" del curs *2020-2021 Q2*.
 
