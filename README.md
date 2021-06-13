@@ -18,7 +18,8 @@ Aquest és el meu projecte de Compiladors de l'asignatura de "Llenguatges de Pro
 - Fitxer `logo3d.g` conté la gramàtica pel llenguatge de programació **Logo3D**.
 
 - Fitxer `visitor.py` conté el visitador de l'*AST*. 
-		-- *Atenció:  aquesta clase HEREDA de la classe plantilla creada per el compilador de ANTLR4. Per tant, és necesari compilar la gramàtica amb el flag **-visitor**.*
+	
+	-- *Atenció:  aquesta clase HEREDA de la classe plantilla creada per el compilador de ANTLR4. Per tant, és necesari compilar la gramàtica amb el flag **-visitor**.*
 		`antlr4 -Dlanguage=Python3 -no-listener -visitor logo3d.g`
 
 - Fitxer `turtle3d.py` conté la classe *Turtle3D* per pintar amb ajuda de la llibrería `vpython`.
