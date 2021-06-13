@@ -1,0 +1,7 @@
+PROC test(a,b) IS
+    IF 2 != 2 THEN
+        << 4
+    ELSE
+        << 5
+    END
+END

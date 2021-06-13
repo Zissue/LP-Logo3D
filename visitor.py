@@ -139,8 +139,8 @@ class TreeVisitor(logo3dVisitor):
 
         
 
-    # Visit a parse tree produced by logo3dParser#funcBody.
-    def visitFuncBody(self, ctx:logo3dParser.FuncBodyContext):
+    # Visit a parse tree produced by logo3dParser#instructions.
+    def visitInstructions(self, ctx:logo3dParser.InstructionsContext):
 
         l = [n for n in ctx.getChildren()]
         n = ctx.getChildCount()
@@ -351,25 +351,117 @@ class TreeVisitor(logo3dVisitor):
         print("\n[WRITE]: ", self.visit(l[1]), " << ", l[1].getText())
 
 
+    # Auxiliar function to check whether a number is True or False 
+    # -1e-6  <=   number   <=  1e-6    then    number == False 
+    def isFalse(self, floatNumber):
+        if floatNumber >= (-1e-6) and floatNumber <= 1e-6:
+            return True
+        else:
+            return False
+
 
     # Visit a parse tree produced by logo3dParser#conditional.
     def visitConditional(self, ctx:logo3dParser.ConditionalContext):
-        return self.visitChildren(ctx)
+
+        l = [n for n in ctx.getChildren()]
+        n = ctx.getChildCount()     # Always 5 or 7 tokens
+
+        print("Num. Tokens: ", n)
+        print("=========================\n")
+        for tks in l:
+            print("Token: ",tks.getText())
+            #print("\n", dir(tks), "\n\n")
+        print("=========================\n")        
+
+        # Check if the condition is False or True 
+        conditionR = self.isFalse(self.visit(l[1]))
+
+        # If conditionR is True,
+        # we execute the 'THEN' block of code 
+        if not conditionR:
+            self.visit(l[3])
+
+        # If conditionR is False and we have 'ELSE',
+        # we execute the 'ELSE' block of code 
+        elif conditionR and n == 7:
+            self.visit(l[5])
 
 
     # Visit a parse tree produced by logo3dParser#while_it.
     def visitWhile_it(self, ctx:logo3dParser.While_itContext):
-        return self.visitChildren(ctx)
+        
+        l = [n for n in ctx.getChildren()]
+        n = ctx.getChildCount()     # Always 5 tokens
 
+        #print("Num. Tokens: ", n)
+        #print("=========================\n")
+        #for tks in l:
+        #    print("Token: ",tks.getText())
+        #    #print("\n", dir(tks), "\n\n")
+        #print("=========================\n") 
+
+        # Check if the condition is False or True 
+        conditionR = self.isFalse(self.visit(l[1]))
+
+        # If conditionR is True,
+        # we execute the 'DO' block of code 
+        while not conditionR:
+            self.visit(l[3])
+            conditionR = self.isFalse(self.visit(l[1]))
 
     # Visit a parse tree produced by logo3dParser#for_it.
     def visitFor_it(self, ctx:logo3dParser.For_itContext):
-        return self.visitChildren(ctx)
+
+        l = [n for n in ctx.getChildren()]
+        n = ctx.getChildCount()     # Always 9 tokens
+
+        print("Num. Tokens: ", n)
+        print("=========================\n")
+        for tks in l:
+            print("Token: ",tks.getText())
+            #print("\n", dir(tks), "\n\n")
+        print("=========================\n")
+
+        # Get procedure's name from the current procedure 
+        fName = self.__funcStack[len(self.__funcStack)-1]
+
+        # 'For' induction variable 
+        inducVar = l[1].getText()
+
+        startValue = self.visit(l[3])
+        finalValue = self.visit(l[5])
+
+        # Create a temporary induction variable in the 
+        # table of symbols of the procedure 
+        self.__funcDict[fName].symDict[inducVar] = startValue
+
+        i = startValue
+        while i <= finalValue:
+            # Executed the 'DO' block of code 
+            self.visit(l[7])
+            # Update the induction variable, it may changed 
+            i = self.__funcDict[fName].symDict[inducVar] 
+            # Next iteration
+            i += 1
+            # Update the increment in the table of symbols
+            self.__funcDict[fName].symDict[inducVar] = i
+
+        # Delete the temporary induction variable created 
+        del self.__funcDict[fName].symDict[inducVar]
 
 
     # Visit a parse tree produced by logo3dParser#invocation.
     def visitInvocation(self, ctx:logo3dParser.InvocationContext):
-        return self.visitChildren(ctx)
+
+        l = [n for n in ctx.getChildren()]
+        n = ctx.getChildCount()     # Always 9 tokens
+
+        print("Num. Tokens: ", n)
+        print("=========================\n")
+        for tks in l:
+            print("Token: ",tks.getText())
+            #print("\n", dir(tks), "\n\n")
+        print("=========================\n")
 
 
     # Visit a parse tree produced by logo3dParser#argsPassed.

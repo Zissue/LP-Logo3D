@@ -3,6 +3,7 @@
 PROC f(a,b) IS
 
     forward(mida)
+    costats := 3
     left(360 / costats)
 
     cercle(1, 12)
@@ -24,9 +25,9 @@ PROC f(a,b) IS
     forward(mida)
     backward(32)
     down(90)
-    up(lol)
+    up(ol)
     left(0)
-    right(caca)
+    right(ca)
 
     escriu(numero, 2)
 END

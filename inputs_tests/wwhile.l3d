@@ -1,0 +1,7 @@
+PROC test() IS
+    i := 1
+    WHILE i <= 5 DO
+        << i
+        i := i+1
+    END
+END

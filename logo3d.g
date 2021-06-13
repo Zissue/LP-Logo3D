@@ -6,10 +6,10 @@ grammar logo3d;
 
 root : proceD* EOF ;
 
-proceD : funcHeader funcBody END ;
+proceD : funcHeader instructions END ;
 funcHeader : PROC IDENT LP funcParam RP IS ;
 funcParam : (IDENT (COMMA IDENT)*)?;
-funcBody : stmt+ ;
+instructions : stmt+ ;
 
 // Statements 
 stmt : while_it
@@ -79,13 +79,13 @@ read : ROP IDENT ;
 
 write : WOP expr ;
 
-conditional : IF expr THEN stmt+ END
-            | IF expr THEN stmt+ ELSE stmt+ END
+conditional : IF expr THEN instructions END
+            | IF expr THEN instructions ELSE instructions END
             ;
 
-while_it : WHILE expr DO stmt+ END ;
+while_it : WHILE expr DO instructions END ;
 
-for_it : FOR IDENT FROM expr TO expr DO stmt+ END ;
+for_it : FOR IDENT FROM expr TO expr DO instructions END ;
 
 invocation : IDENT LP argsPassed RP ;
 argsPassed : (expr (COMMA expr)*)? ;

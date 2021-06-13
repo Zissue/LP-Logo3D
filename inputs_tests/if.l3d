@@ -16,6 +16,13 @@ PROC f(a,b) IS
         z := 2 
     END
 
+    IF x == y THEN 
+        z := 1 
+        << 7*234
+    ELSE 
+        z := 2
+        << 234*9>4656
+    END
 END
 
 PROC main() IS
