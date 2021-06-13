@@ -1,6 +1,15 @@
-import sys
+###################################### 
+###################################### 
+### Author: Zixuan Sun 
+### [LP] 2020-2021 - Q2 - Logo3D 
+### Group: 22 L
+###################################### 
+###################################### 
+
+import sys      # To exit the program in case of errors
 import readline # To read input
-from turtle3d import Turtle3D
+from turtle3d import Turtle3D   # Turtle3D API
+
 if __name__ is not None and "." in __name__:
     from .logo3dParser import logo3dParser
     from .logo3dVisitor import logo3dVisitor
@@ -8,74 +17,108 @@ else:
     from logo3dParser import logo3dParser
     from logo3dVisitor import logo3dVisitor
 
-#################################
+#####################################
 
 class ProcL3D:
 
+    '''
+    Aquesta clase es per guardar els "atributs"
+    d'un procediment.
+    '''
+
     def __init__(self, fName = "", fParam = [], fDict = {}, fCode = None):
+        
+        # Atribut que guarda el nom del procediment 
         self.funcName = fName
+
+        # Atribut que guarda el nom dels parametres 
         self.listParam = fParam
+
+        # Diccionari que guarda la variable amb el
+        # seu valor
         self.symDict = fDict
+        
+        # Atribut que guarda el bloc de codi del
+        # procediment com un token sencer
         self.blockofCode = fCode
 
 #################################
 
 class TreeVisitor(logo3dVisitor):
 
-    # Class atributes
+    '''
+    Aquesta clase hereda de la clase logo3dVisitor creada
+    per el compilador de antlr4.
+    '''
+
+    # Class constructor and atributes
     def __init__(self, firstPROC = "main", paramInvoc = [], turtleI = None):
+
+        # Atribut per guardar el nom de totes les funcions
         self.__funcList = []
+        # Atribut per guardar el nom de les funcions invocades
+        # es a dir, es com una pila de les funcions invocades
         self.__funcStack = []
+        # Atribut que guarda com a clau el nom de la funcio, i
+        # com a valor un instancia de la classe anterior ProcL3D 
         self.__funcDict = {}
 
+        # Atribut per guardar el nom del procediment pel
+        # qual es comenca a executar, per defecte, es el
+        # "main"
         self.__firstProcedure = firstPROC
+        # Atribut per guardar la llista dels valors del
+        # primer procediment
         self.__paramFirstProcedure = paramInvoc
 
+        # Atribut per instanciar Turtle3D
         self.__turtle = turtleI
+        # Atribut que indica si hi ha una instancia 
+        # de la finestra grafica o no
         self.__enableTurt = False
 
-    # Given a substring find the first index of 
-    # the element in the list that contains the substring 
+
+
+    # Donat una llista de strings i un string,
+    # retorna l'index del primer element del qual 
+    # conte el substring del parametre 
     def index_string_list(self, the_list, substring):
         for i, s in enumerate(the_list):
             if substring in s:
                   return i
         return None
 
-    # Visit root 
+
+
+    # Visit a parse tree produced by logo3dParser#root.
     def visitRoot(self, ctx):
 
         l = [n for n in ctx.getChildren()]
         n = ctx.getChildCount()
-
+        
+        # Warning per indicar que no hi ha cap procediment
+        # en el programa, pero es correcte 
         if n <= 1:
             print("\n[WARNING]: No procedures (PROC) in this Logo3D program...\n")
             return
 
         l.pop()     # removes <EOF> token   
 
+        # Obtenim la llista de funcions, i mirem si
+        # existeix el primer procediment
         proceds = [p.getText() for p in l]
-
-        print("=========================\n")
-        for tks in proceds:
-            print(tks)
-        print("=========================\n")
-
         aux = "PROC"+self.__firstProcedure+"("
-
         index = self.index_string_list(proceds, aux)
-
         if index == None:
             print("\n[ERROR]: First procedure '", self.__firstProcedure, "' does not exist...\n", sep="")
             return
-        #elif index <= n-2:
-        #    sys.exit("[ERROR:]: Unexpected error ocurred!")
 
         # List of procedures except the first invocation one 
         l2 = l[:]
         l2.pop(index)
 
-        # Visit all the other procedures 
+        # Visit all the other procedures
+        # to complete self.__funcDict
         for procedure in l2:
             fName = self.visit(procedure)
 
@@ -85,6 +128,7 @@ class TreeVisitor(logo3dVisitor):
         print("\n")
 
 
+
     # Visit a parse tree produced by logo3dParser#proceD.
     def visitProceD(self, ctx:logo3dParser.ProceDContext):
         
@@ -92,13 +136,6 @@ class TreeVisitor(logo3dVisitor):
         n = ctx.getChildCount()     # Always 3 tokens
 
 
-        print("Num. Tokens: ", n)
-        print("=========================\n")
-        for tks in l:
-            print("Token: ", tks.getText())
-            #print("\n", dir(tks), "\n\n")
-        print("=========================\n")
-        
         if len(l) != 3:
            sys.exit("[ERROR]: Bad procedure declaration...")
             
@@ -126,17 +163,12 @@ class TreeVisitor(logo3dVisitor):
         l = [n for n in ctx.getChildren()]
         n = ctx.getChildCount()
 
-        #print("=========================\n")
-        #for tks in l:
-        #    print(tks.getText())
-        #    #print("\n", dir(tks), "\n\n")
-        #print("=========================\n")
-
+        # Procedure name
         fName = l[1].getText()
 
+        # Check if the procedure is already defined 
         if fName not in self.__funcList:
             self.__funcList.append(fName)
-            #print("My function name: ", fName)
         else:
             sys.exit("[ERROR]: Procedure name duplicated!")
         
@@ -151,9 +183,6 @@ class TreeVisitor(logo3dVisitor):
 
     # Visit a parse tree produced by logo3dParser#funcParam.
     def visitFuncParam(self, ctx:logo3dParser.FuncParamContext, ):
-
-        #l = [n for n in ctx.getChildren()]
-        #n = ctx.getChildCount()
 
         fN = self.__funcStack[len(self.__funcStack)-1]
 
@@ -177,15 +206,14 @@ class TreeVisitor(logo3dVisitor):
             if len(param) != len(definedParams):
                 sys.exit("[ERROR]: Wrong number of arguments for the first invocation!")
 
+            # Set the values of the first invocation 
             for i in range(0,len(param)):
                 varName = param[i]
                 argValue = definedParams[i]
                 symD[varName] = argValue
 
-        #print(symD) 
-
+        # Create an instance of class ProcL3D 
         proc = ProcL3D(fName = fN, fParam = param, fDict = symD)
-
         self.__funcDict[fN] = proc
 
         
@@ -196,6 +224,7 @@ class TreeVisitor(logo3dVisitor):
         l = [n for n in ctx.getChildren()]
         n = ctx.getChildCount()     # At least 1 token 
 
+        # Visit every statement
         for stmt in l:
             self.visit(stmt)
 
@@ -205,9 +234,8 @@ class TreeVisitor(logo3dVisitor):
     def visitStmt(self, ctx:logo3dParser.StmtContext):
 
         l = [n for n in ctx.getChildren()]
-        n = ctx.getChildCount()
 
-        # Visit single statement  
+        # Visit the single statement  
         self.visit(l[0])
 
     
@@ -217,13 +245,6 @@ class TreeVisitor(logo3dVisitor):
 
         l = [n for n in ctx.getChildren()]
         n = ctx.getChildCount()
-
-        #print("Num. Tokens: ", n)
-        #print("=========================\n")
-        #for tks in l:
-        #    print("Token: ",tks.getText())
-        #    print("\n", dir(tks), "\n\n")
-        #print("=========================\n")       
 
         varName = l[0].getText()
         valueAssign = self.visit(l[2])
@@ -235,7 +256,6 @@ class TreeVisitor(logo3dVisitor):
         # symbols dictionary
         self.__funcDict[fName].symDict[varName] = valueAssign
 
-        #print(self.__funcDict[fName].symDict)
 
 
 
@@ -244,13 +264,6 @@ class TreeVisitor(logo3dVisitor):
         
         l = [n for n in ctx.getChildren()]
         n = ctx.getChildCount()
-
-        #print("#Tokens: ", n)
-        #print("=========================\n")
-        #for tks in l:
-        #    print("Token: ", tks.getText())
-        #    #print("\n", dir(tks), "\n\n")
-        #print("=========================\n")
 
         if n == 1:
             # Recursive case: numExpr 
@@ -301,22 +314,11 @@ class TreeVisitor(logo3dVisitor):
         l = [n for n in ctx.getChildren()]
         n = ctx.getChildCount()
 
-        #print("#Tokens: ", n)
-        #print("=========================\n")
-        #for tks in l:
-        #    print("Token: ", tks.getText())
-        #    print("\n", dir(tks), "\n\n")
-        #print("=========================\n")
-
-        #if n == 1 and "getRuleIndex" in dir(l[0]):
-        #    print("YOOOOOOOOOO: ", l[0].getText())
-        #    return self.visit(l[0])
-
         # When there's a single token:
         # Case: Float number
         if n == 1 and logo3dParser.NUM == l[0].getSymbol().type:
-            #print("\n THIS IS JUST A NUMBER: ", l[0].getText())
             return float(l[0].getText())
+
         # Case: A variable 
         elif n == 1 and logo3dParser.IDENT == l[0].getSymbol().type:
 
@@ -359,6 +361,7 @@ class TreeVisitor(logo3dVisitor):
     # Visit a parse tree produced by logo3dParser#read.
     def visitRead(self, ctx:logo3dParser.ReadContext):
 
+        # Ignore pre-process reads
         if self.__funcStack[0] != self.__firstProcedure:
             return
 
@@ -392,6 +395,7 @@ class TreeVisitor(logo3dVisitor):
     # Visit a parse tree produced by logo3dParser#write.
     def visitWrite(self, ctx:logo3dParser.WriteContext):
         
+        # Ignore pre-process writes 
         if self.__funcStack[0] != self.__firstProcedure:
             return
 
@@ -419,13 +423,6 @@ class TreeVisitor(logo3dVisitor):
         l = [n for n in ctx.getChildren()]
         n = ctx.getChildCount()     # Always 5 or 7 tokens
 
-        #print("Num. Tokens: ", n)
-        #print("=========================\n")
-        #for tks in l:
-        #    print("Token: ",tks.getText())
-        #    #print("\n", dir(tks), "\n\n")
-        #print("=========================\n")        
-
         # Check if the condition is False or True 
         conditionR = self.isFalse(self.visit(l[1]))
 
@@ -447,13 +444,6 @@ class TreeVisitor(logo3dVisitor):
         l = [n for n in ctx.getChildren()]
         n = ctx.getChildCount()     # Always 5 tokens
 
-        #print("Num. Tokens: ", n)
-        #print("=========================\n")
-        #for tks in l:
-        #    print("Token: ",tks.getText())
-        #    #print("\n", dir(tks), "\n\n")
-        #print("=========================\n") 
-
         # Check if the condition is False or True 
         conditionR = self.isFalse(self.visit(l[1]))
 
@@ -470,13 +460,6 @@ class TreeVisitor(logo3dVisitor):
 
         l = [n for n in ctx.getChildren()]
         n = ctx.getChildCount()     # Always 9 tokens
-
-        #print("Num. Tokens: ", n)
-        #print("=========================\n")
-        #for tks in l:
-        #    print("Token: ",tks.getText())
-        #    #print("\n", dir(tks), "\n\n")
-        #print("=========================\n")
 
         # Get procedure's name from the current procedure 
         fName = self.__funcStack[len(self.__funcStack)-1]
@@ -515,14 +498,6 @@ class TreeVisitor(logo3dVisitor):
             return
 
         l = [n for n in ctx.getChildren()]
-        #n = ctx.getChildCount()     # At least 3 tokens
-
-        #print("Num. Tokens: ", n)
-        #print("=========================\n")
-        #for tks in l:
-        #    print("Token: ",tks.getText())
-        #    #print("\n", dir(tks), "\n\n")
-        #print("=========================\n")
 
         invocName = l[0].getText()
 
@@ -536,15 +511,6 @@ class TreeVisitor(logo3dVisitor):
         l = [n for n in ctx.getChildren() if "getRuleIndex" in dir(n)]
         n = ctx.getChildCount()     
 
-        #print("Num. Tokens: ", n)
-        #print("----------------\n")
-        #for tks in l:
-        #    print("Token: ",tks.getText())
-        #    #print("\n", dir(tks), "\n\n")
-        #print("----------------\n")
-
-        ## Get procedure's name from the current procedure 
-        #fName = self.__funcStack[len(self.__funcStack)-1]
 
         paramList = self.__funcDict[invocName].listParam
 
@@ -555,12 +521,8 @@ class TreeVisitor(logo3dVisitor):
 
         # List of arguments passed evaluated 
         evaluatedArgs = [self.visit(n) for n in l]
-        #print(evaluatedArgs) 
 
-        #if self.__funcStack[len(self.__funcStack)-1] == self.__firstProcedure:
-
-        # Copy of the original table of symbols 
-        #copyDict = dict(self.__funcDict[invocName].symDict)
+        # Taula de simbols amb els valors de les variables 
         symDict = self.__funcDict[invocName].symDict
 
         # Assign the value of the evaluated arguments 
@@ -570,13 +532,13 @@ class TreeVisitor(logo3dVisitor):
             argVal = evaluatedArgs[i]
             symDict[varName] = argVal
         
-        #print(symDict)
-
-        #self.__funcStack.append((invocName, copyDict))
+        # Empilem el nom del procediment
         self.__funcStack.append(invocName)
 
+        # Crida recursiva per executar el bloc de codi invocat 
         self.visit(self.__funcDict[invocName].blockofCode)
 
+        # Desempilem el nom del procediment
         self.__funcStack.pop(len(self.__funcStack)-1)
 
 
@@ -592,23 +554,16 @@ class TreeVisitor(logo3dVisitor):
 
         l = [n for n in ctx.getChildren() if "getRuleIndex" in dir(n)]
         n = ctx.getChildCount()     
-
-        #print("Num. Tokens: ", n)
-        #print("=========================\n")
-        #for tks in l:
-        #    print("Token: ",tks.getText())
-        #    #print("\n", dir(tks), "\n\n")
-        #print("=========================\n")
-
-        rgb = [float(n.getText()) for n in l]
-
-        #print(rgb)
+        
+        # Avaluem cada expresio r g b 
+        rgb = [float(self.visit(n)) for n in l]
 
         # Check if the graphic window is 
         # already initialized from before 
         if not self.__enableTurt:
             self.initializeTurtle()
 
+        # Cridem a la API de Turtle3D
         self.__turtle.color(rgb[0],rgb[1],rgb[2])
         print("[Turtle3D]: Color set to rgb", rgb , " successfully!", sep="")
 
@@ -624,18 +579,12 @@ class TreeVisitor(logo3dVisitor):
         l = [n for n in ctx.getChildren() ]
         n = ctx.getChildCount()     
 
-        #print("Num. Tokens: ", n)
-        #print("=========================\n")
-        #for tks in l:
-        #    print("Token: ",tks.getText())
-        #    #print("\n", dir(tks), "\n\n")
-        #print("=========================\n")
-
         # Check if the graphic window is 
         # already initialized from before 
         if not self.__enableTurt:
             self.initializeTurtle()
 
+        # Cridem a la API de Turtle3D
         self.__turtle.home()
         print("[Turtle3D]: Home position!", sep="")
 
@@ -650,18 +599,12 @@ class TreeVisitor(logo3dVisitor):
         l = [n for n in ctx.getChildren() ]
         n = ctx.getChildCount()     
 
-        #print("Num. Tokens: ", n)
-        #print("=========================\n")
-        #for tks in l:
-        #    print("Token: ",tks.getText())
-        #    #print("\n", dir(tks), "\n\n")
-        #print("=========================\n")
-
         # Check if the graphic window is 
         # already initialized from before 
         if not self.__enableTurt:
             self.initializeTurtle()
 
+        # Cridem a la API de Turtle3D
         self.__turtle.show()
         print("[Turtle3D]: Showing paint!", sep="")
 
@@ -676,18 +619,12 @@ class TreeVisitor(logo3dVisitor):
         l = [n for n in ctx.getChildren() ]
         n = ctx.getChildCount()     
 
-        #print("Num. Tokens: ", n)
-        #print("=========================\n")
-        #for tks in l:
-        #    print("Token: ",tks.getText())
-        #    #print("\n", dir(tks), "\n\n")
-        #print("=========================\n")
-
         # Check if the graphic window is 
         # already initialized from before 
         if not self.__enableTurt:
             self.initializeTurtle()
 
+        # Cridem a la API de Turtle3D
         self.__turtle.hide()
         print("[Turtle3D]: Hiding paint!", sep="")
 
@@ -702,13 +639,7 @@ class TreeVisitor(logo3dVisitor):
         l = [n for n in ctx.getChildren() ]
         n = ctx.getChildCount()     
 
-        #print("Num. Tokens: ", n)
-        #print("=========================\n")
-        #for tks in l:
-        #    print("Token: ",tks.getText())
-        #    #print("\n", dir(tks), "\n\n")
-        #print("=========================\n")
-
+        # Avaluem la expresio del argument
         arg = float(self.visit(l[2]))
 
         # Check if the graphic window is 
@@ -716,6 +647,7 @@ class TreeVisitor(logo3dVisitor):
         if not self.__enableTurt:
             self.initializeTurtle()
 
+        # Cridem a la API de Turtle3D
         self.__turtle.forward(arg)
         print("[Turtle3D]: Moved forward ", arg, " units successfully!", sep="")
 
@@ -730,13 +662,7 @@ class TreeVisitor(logo3dVisitor):
         l = [n for n in ctx.getChildren() ]
         n = ctx.getChildCount()     
 
-        #print("Num. Tokens: ", n)
-        #print("=========================\n")
-        #for tks in l:
-        #    print("Token: ",tks.getText())
-        #    #print("\n", dir(tks), "\n\n")
-        #print("=========================\n")
-
+        # Avaluem la expresio del argument
         arg = float(self.visit(l[2]))
 
         # Check if the graphic window is 
@@ -744,6 +670,7 @@ class TreeVisitor(logo3dVisitor):
         if not self.__enableTurt:
             self.initializeTurtle()
 
+        # Cridem a la API de Turtle3D
         self.__turtle.backward(arg)
         print("[Turtle3D]: Moved backward ", arg, " units successfully!", sep="")
 
@@ -758,13 +685,7 @@ class TreeVisitor(logo3dVisitor):
         l = [n for n in ctx.getChildren() ]
         n = ctx.getChildCount()     
 
-        #print("Num. Tokens: ", n)
-        #print("=========================\n")
-        #for tks in l:
-        #    print("Token: ",tks.getText())
-        #    #print("\n", dir(tks), "\n\n")
-        #print("=========================\n")
-
+        # Avaluem la expresio del argument
         arg = float(self.visit(l[2]))
 
         # Check if the graphic window is 
@@ -772,6 +693,7 @@ class TreeVisitor(logo3dVisitor):
         if not self.__enableTurt:
             self.initializeTurtle()
 
+        # Cridem a la API de Turtle3D
         self.__turtle.up(arg)
         print("[Turtle3D]: Turned ", arg, " degrees upward successfully!", sep="")
 
@@ -786,13 +708,7 @@ class TreeVisitor(logo3dVisitor):
         l = [n for n in ctx.getChildren() ]
         n = ctx.getChildCount()     
 
-        #print("Num. Tokens: ", n)
-        #print("=========================\n")
-        #for tks in l:
-        #    print("Token: ",tks.getText())
-        #    #print("\n", dir(tks), "\n\n")
-        #print("=========================\n")
-
+        # Avaluem la expresio del argument
         arg = float(self.visit(l[2]))
 
         # Check if the graphic window is 
@@ -800,6 +716,7 @@ class TreeVisitor(logo3dVisitor):
         if not self.__enableTurt:
             self.initializeTurtle()
 
+        # Cridem a la API de Turtle3D
         self.__turtle.down(arg)
         print("[Turtle3D]: Turned ", arg, " degrees downward successfully!", sep="")
 
@@ -814,13 +731,7 @@ class TreeVisitor(logo3dVisitor):
         l = [n for n in ctx.getChildren() ]
         n = ctx.getChildCount()     
 
-        #print("Num. Tokens: ", n)
-        #print("=========================\n")
-        #for tks in l:
-        #    print("Token: ",tks.getText())
-        #    #print("\n", dir(tks), "\n\n")
-        #print("=========================\n")
-
+        # Avaluem la expresio del argument
         arg = float(self.visit(l[2]))
 
         # Check if the graphic window is 
@@ -828,6 +739,7 @@ class TreeVisitor(logo3dVisitor):
         if not self.__enableTurt:
             self.initializeTurtle()
 
+        # Cridem a la API de Turtle3D
         self.__turtle.left(arg)
         print("[Turtle3D]: Turned ", arg, " degrees to the left successfully!", sep="")
 
@@ -842,13 +754,7 @@ class TreeVisitor(logo3dVisitor):
         l = [n for n in ctx.getChildren() ]
         n = ctx.getChildCount()     
 
-       #print("Num. Tokens: ", n)
-       #print("=========================\n")
-       #for tks in l:
-       #    print("Token: ",tks.getText())
-       #    #print("\n", dir(tks), "\n\n")
-       #print("=========================\n")
-
+        # Avaluem la expresio del argument
         arg = float(self.visit(l[2]))
 
         # Check if the graphic window is 
@@ -856,12 +762,16 @@ class TreeVisitor(logo3dVisitor):
         if not self.__enableTurt:
             self.initializeTurtle()
 
+        # Cridem a la API de Turtle3D
         self.__turtle.right(arg)
         print("[Turtle3D]: Turned ", arg, " degrees to the right successfully!", sep="")
 
 
     # To start a graphic window 
     def initializeTurtle(self):
-        self.__turtle = Turtle3D(debug=True)
+        # Instanciem de la classe Turtle3D
+        # NOTA: per veuere els eixos de coordenades
+        # cal posar debug a True
+        self.__turtle = Turtle3D(debug=False)
         self.__enableTurt = True
 
