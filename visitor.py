@@ -160,11 +160,24 @@ class TreeVisitor(logo3dVisitor):
         if len(param) != len(set(param)):
             sys.exit("[ERROR]: Duplicated parameter name in a procedure header!")
 
+        # Set all variables to 0.0  
         symD = {}
         for p in param:
             symD[p] = 0.0
 
-        print(symD)
+        # Check first invocation number of parameters 
+        if self.__funcStack[0] == self.__firstProcedure:
+            
+            definedParams = self.__paramFirstProcedure
+            if len(param) != len(definedParams):
+                sys.exit("[ERROR]: Wrong number of arguments for the first invocation!")
+
+            for i in range(0,len(param)):
+                varName = param[i]
+                argValue = definedParams[i]
+                symD[varName] = argValue
+
+        #print(symD) 
 
         proc = ProcL3D(fName = fN, fParam = param, fDict = symD)
 
@@ -176,7 +189,7 @@ class TreeVisitor(logo3dVisitor):
     def visitInstructions(self, ctx:logo3dParser.InstructionsContext):
 
         l = [n for n in ctx.getChildren()]
-        n = ctx.getChildCount()     # At least 1 token
+        n = ctx.getChildCount()     # At least 1 token 
 
         for stmt in l:
             self.visit(stmt)
@@ -505,10 +518,10 @@ class TreeVisitor(logo3dVisitor):
         invocName = l[0].getText()
 
         if self.__funcStack[0] != self.__firstProcedure:
-            print("YEP!!")
+            #print("YEP!!")
             return
         
-        print("Invocating...")
+        #print("Invocating...")
 
         # Check if the invocation name is a procedure name 
         if invocName not in self.__funcList:
@@ -538,7 +551,7 @@ class TreeVisitor(logo3dVisitor):
 
         # List of arguments passed evaluated 
         evaluatedArgs = [self.visit(n) for n in l]
-        print(evaluatedArgs)
+        #print(evaluatedArgs)
 
         #if self.__funcStack[len(self.__funcStack)-1] == self.__firstProcedure:
 
@@ -553,7 +566,7 @@ class TreeVisitor(logo3dVisitor):
             argVal = evaluatedArgs[i]
             symDict[varName] = argVal
         
-        print(symDict)
+        #print(symDict)
 
         #self.__funcStack.append((invocName, copyDict))
         self.__funcStack.append(invocName)

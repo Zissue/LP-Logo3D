@@ -1,6 +1,7 @@
 // Read test
 
 PROC f(a,b) IS
+    << a << b
     >> rado
     >> rada >> rade 
     >> radu
