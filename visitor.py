@@ -1,5 +1,6 @@
 import sys
-import readline
+import readline # To read input
+from turtle3d import Turtle3D
 if __name__ is not None and "." in __name__:
     from .logo3dParser import logo3dParser
     from .logo3dVisitor import logo3dVisitor
@@ -22,12 +23,16 @@ class ProcL3D:
 class TreeVisitor(logo3dVisitor):
 
     # Class atributes
-    def __init__(self, firstPROC = "main", paramInvoc = []):
+    def __init__(self, firstPROC = "main", paramInvoc = [], turtleI = None):
         self.__funcList = []
         self.__funcStack = []
         self.__funcDict = {}
+
         self.__firstProcedure = firstPROC
         self.__paramFirstProcedure = paramInvoc
+
+        self.__turtle = turtleI
+        self.__enableTurt = False
 
     # Given a substring find the first index of 
     # the element in the list that contains the substring 
@@ -56,7 +61,7 @@ class TreeVisitor(logo3dVisitor):
             print(tks)
         print("=========================\n")
 
-        aux = "PROC"+self.__firstProcedure
+        aux = "PROC"+self.__firstProcedure+"("
 
         index = self.index_string_list(proceds, aux)
 
@@ -505,6 +510,10 @@ class TreeVisitor(logo3dVisitor):
     # Visit a parse tree produced by logo3dParser#invocation.
     def visitInvocation(self, ctx:logo3dParser.InvocationContext):
 
+        # Ignore pre-process invocations 
+        if self.__funcStack[0] != self.__firstProcedure:
+            return
+
         l = [n for n in ctx.getChildren()]
         #n = ctx.getChildCount()     # At least 3 tokens
 
@@ -517,15 +526,10 @@ class TreeVisitor(logo3dVisitor):
 
         invocName = l[0].getText()
 
-        if self.__funcStack[0] != self.__firstProcedure:
-            #print("YEP!!")
-            return
-        
-        #print("Invocating...")
-
         # Check if the invocation name is a procedure name 
         if invocName not in self.__funcList:
-            print("[ERROR]: The procedure '",invocName,"' does not exist!",sep="")
+            saux = "[ERROR]: The procedure '"+invocName+"' does not exist!"
+            sys.exit(saux)
             return
 
         # List of the parameters tokens 
@@ -546,12 +550,16 @@ class TreeVisitor(logo3dVisitor):
 
         # Check if the number of arguments is correct 
         if len(paramList) != len(l):
-            print("[ERROR]: Wrong number of parameters  of the invocation '",invocName,"'")
+            print("[ERROR]: Wrong number of parameters in the invocation '", invocName, "'", sep="")
             return
 
         # List of arguments passed evaluated 
         evaluatedArgs = [self.visit(n) for n in l]
-        #print(evaluatedArgs)
+        #print(evaluatedArgs) 
+
+        # List of arguments passed evaluated 
+        evaluatedArgs = [self.visit(n) for n in l]
+        #print(evaluatedArgs) 
 
         #if self.__funcStack[len(self.__funcStack)-1] == self.__firstProcedure:
 
@@ -579,54 +587,283 @@ class TreeVisitor(logo3dVisitor):
 
     # Visit a parse tree produced by logo3dParser#color.
     def visitColor(self, ctx:logo3dParser.ColorContext):
-        return self.visitChildren(ctx)
+
+        # Ignore pre-process invocations 
+        if self.__funcStack[0] != self.__firstProcedure:
+            return
+
+        l = [n for n in ctx.getChildren() if "getRuleIndex" in dir(n)]
+        n = ctx.getChildCount()     
+
+        #print("Num. Tokens: ", n)
+        #print("=========================\n")
+        #for tks in l:
+        #    print("Token: ",tks.getText())
+        #    #print("\n", dir(tks), "\n\n")
+        #print("=========================\n")
+
+        rgb = [float(n.getText()) for n in l]
+
+        #print(rgb)
+
+        # Check if the graphic window is 
+        # already initialized from before 
+        if not self.__enableTurt:
+            self.initializeTurtle()
+
+        # self.__turtle.color(rgb[0],rgb[1],rgb[2])
+        print("[Turtle3D]: Color set to rgb", rgb , " successfully!", sep="")
+
 
 
     # Visit a parse tree produced by logo3dParser#home.
     def visitHome(self, ctx:logo3dParser.HomeContext):
-        return self.visitChildren(ctx)
+
+        # Ignore pre-process invocations 
+        if self.__funcStack[0] != self.__firstProcedure:
+            return
+
+        l = [n for n in ctx.getChildren() ]
+        n = ctx.getChildCount()     
+
+        #print("Num. Tokens: ", n)
+        #print("=========================\n")
+        #for tks in l:
+        #    print("Token: ",tks.getText())
+        #    #print("\n", dir(tks), "\n\n")
+        #print("=========================\n")
+
+        # Check if the graphic window is 
+        # already initialized from before 
+        if not self.__enableTurt:
+            self.initializeTurtle()
+
+        # self.__turtle.home()
+        print("[Turtle3D]: Home position!", sep="")
 
 
     # Visit a parse tree produced by logo3dParser#show.
     def visitShow(self, ctx:logo3dParser.ShowContext):
-        return self.visitChildren(ctx)
+
+        # Ignore pre-process invocations 
+        if self.__funcStack[0] != self.__firstProcedure:
+            return
+
+        l = [n for n in ctx.getChildren() ]
+        n = ctx.getChildCount()     
+
+        #print("Num. Tokens: ", n)
+        #print("=========================\n")
+        #for tks in l:
+        #    print("Token: ",tks.getText())
+        #    #print("\n", dir(tks), "\n\n")
+        #print("=========================\n")
+
+        # Check if the graphic window is 
+        # already initialized from before 
+        if not self.__enableTurt:
+            self.initializeTurtle()
+
+        # self.__turtle.show()
+        print("[Turtle3D]: Showing paint!", sep="")
 
 
     # Visit a parse tree produced by logo3dParser#hide.
     def visitHide(self, ctx:logo3dParser.HideContext):
-        return self.visitChildren(ctx)
+
+        # Ignore pre-process invocations 
+        if self.__funcStack[0] != self.__firstProcedure:
+            return
+
+        l = [n for n in ctx.getChildren() ]
+        n = ctx.getChildCount()     
+
+        #print("Num. Tokens: ", n)
+        #print("=========================\n")
+        #for tks in l:
+        #    print("Token: ",tks.getText())
+        #    #print("\n", dir(tks), "\n\n")
+        #print("=========================\n")
+
+        # Check if the graphic window is 
+        # already initialized from before 
+        if not self.__enableTurt:
+            self.initializeTurtle()
+
+        # self.__turtle.hide()
+        print("[Turtle3D]: Hiding paint!", sep="")
 
 
     # Visit a parse tree produced by logo3dParser#forward.
     def visitForward(self, ctx:logo3dParser.ForwardContext):
-        return self.visitChildren(ctx)
+
+        # Ignore pre-process invocations 
+        if self.__funcStack[0] != self.__firstProcedure:
+            return
+
+        l = [n for n in ctx.getChildren() ]
+        n = ctx.getChildCount()     
+
+        #print("Num. Tokens: ", n)
+        #print("=========================\n")
+        #for tks in l:
+        #    print("Token: ",tks.getText())
+        #    #print("\n", dir(tks), "\n\n")
+        #print("=========================\n")
+
+        arg = float(self.visit(l[2]))
+
+        # Check if the graphic window is 
+        # already initialized from before 
+        if not self.__enableTurt:
+            self.initializeTurtle()
+
+        # self.__turtle.forward(arg)
+        print("[Turtle3D]: Moved forward ", arg, " units successfully!", sep="")
 
 
     # Visit a parse tree produced by logo3dParser#backward.
     def visitBackward(self, ctx:logo3dParser.BackwardContext):
-        return self.visitChildren(ctx)
+
+        # Ignore pre-process invocations 
+        if self.__funcStack[0] != self.__firstProcedure:
+            return
+
+        l = [n for n in ctx.getChildren() ]
+        n = ctx.getChildCount()     
+
+        #print("Num. Tokens: ", n)
+        #print("=========================\n")
+        #for tks in l:
+        #    print("Token: ",tks.getText())
+        #    #print("\n", dir(tks), "\n\n")
+        #print("=========================\n")
+
+        arg = float(self.visit(l[2]))
+
+        # Check if the graphic window is 
+        # already initialized from before 
+        if not self.__enableTurt:
+            self.initializeTurtle()
+
+        # self.__turtle.backward(arg)
+        print("[Turtle3D]: Moved backward ", arg, " units successfully!", sep="")
 
 
     # Visit a parse tree produced by logo3dParser#up.
     def visitUp(self, ctx:logo3dParser.UpContext):
-        return self.visitChildren(ctx)
+
+        # Ignore pre-process invocations 
+        if self.__funcStack[0] != self.__firstProcedure:
+            return
+
+        l = [n for n in ctx.getChildren() ]
+        n = ctx.getChildCount()     
+
+        #print("Num. Tokens: ", n)
+        #print("=========================\n")
+        #for tks in l:
+        #    print("Token: ",tks.getText())
+        #    #print("\n", dir(tks), "\n\n")
+        #print("=========================\n")
+
+        arg = float(self.visit(l[2]))
+
+        # Check if the graphic window is 
+        # already initialized from before 
+        if not self.__enableTurt:
+            self.initializeTurtle()
+
+        # self.__turtle.up(arg)
+        print("[Turtle3D]: Turned ", arg, " degrees upward successfully!", sep="")
 
 
     # Visit a parse tree produced by logo3dParser#down.
     def visitDown(self, ctx:logo3dParser.DownContext):
-        return self.visitChildren(ctx)
+
+        # Ignore pre-process invocations 
+        if self.__funcStack[0] != self.__firstProcedure:
+            return
+
+        l = [n for n in ctx.getChildren() ]
+        n = ctx.getChildCount()     
+
+        #print("Num. Tokens: ", n)
+        #print("=========================\n")
+        #for tks in l:
+        #    print("Token: ",tks.getText())
+        #    #print("\n", dir(tks), "\n\n")
+        #print("=========================\n")
+
+        arg = float(self.visit(l[2]))
+
+        # Check if the graphic window is 
+        # already initialized from before 
+        if not self.__enableTurt:
+            self.initializeTurtle()
+
+        # self.__turtle.down(arg)
+        print("[Turtle3D]: Turned ", arg, " degrees downward successfully!", sep="")
 
 
     # Visit a parse tree produced by logo3dParser#left.
     def visitLeft(self, ctx:logo3dParser.LeftContext):
-        return self.visitChildren(ctx)
+
+        # Ignore pre-process invocations 
+        if self.__funcStack[0] != self.__firstProcedure:
+            return
+
+        l = [n for n in ctx.getChildren() ]
+        n = ctx.getChildCount()     
+
+        #print("Num. Tokens: ", n)
+        #print("=========================\n")
+        #for tks in l:
+        #    print("Token: ",tks.getText())
+        #    #print("\n", dir(tks), "\n\n")
+        #print("=========================\n")
+
+        arg = float(self.visit(l[2]))
+
+        # Check if the graphic window is 
+        # already initialized from before 
+        if not self.__enableTurt:
+            self.initializeTurtle()
+
+        # self.__turtle.left(arg)
+        print("[Turtle3D]: Turned ", arg, " degrees to the left successfully!", sep="")
 
 
     # Visit a parse tree produced by logo3dParser#right.
     def visitRight(self, ctx:logo3dParser.RightContext):
-        return self.visitChildren(ctx)
+
+        # Ignore pre-process invocations 
+        if self.__funcStack[0] != self.__firstProcedure:
+            return
+
+        l = [n for n in ctx.getChildren() ]
+        n = ctx.getChildCount()     
+
+       #print("Num. Tokens: ", n)
+       #print("=========================\n")
+       #for tks in l:
+       #    print("Token: ",tks.getText())
+       #    #print("\n", dir(tks), "\n\n")
+       #print("=========================\n")
+
+        arg = float(self.visit(l[2]))
+
+        # Check if the graphic window is 
+        # already initialized from before 
+        if not self.__enableTurt:
+            self.initializeTurtle()
+
+        # self.__turtle.right(arg)
+        print("[Turtle3D]: Turned ", arg, " degrees to the right successfully!", sep="")
 
 
-
- 
+    # To start a graphic window 
+    def initializeTurtle(self):
+        self.__turtle = Turtle3D(debug=True)
+        self.__enableTurt = True
 

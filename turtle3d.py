@@ -142,8 +142,8 @@ class Turtle3D:
     def z(self):
         return self.__position.z
 
-    def setColor(self, color):
-        self.__myColor = color
+    def color(self, r, g, b):
+        self.__myColor = vector(r,g,b)
         self.__update()
 
     def setOriginPoint(self, point):
@@ -160,26 +160,26 @@ class Turtle3D:
 
 
 
-turtle = Turtle3D(debug=True)
+#turtle = Turtle3D(debug=True)
 
-d = 0.05
+#d = 0.05
 #turtle.left(-90)
-while True:
-    #if turtle.x() > 10 or turtle.x() < 0:
-    #    d = -d
-
-    #if turtle.x() > 4 and turtle.x() < 8:
-    #    turtle.hidePaint()
-    #else:
-    #    turtle.showPaint()
-    if turtle.x() >= 5: 
-        print("\n\nYA LLEGUE\n\n")
-        turtle.backHome()
-    
-    print(turtle.x())
-    turtle.setX(turtle.x() + d)
-    #turtle.left(90)
-    rate(60)
+#while True:
+#    #if turtle.x() > 10 or turtle.x() < 0:
+#    #    d = -d
+#
+#    #if turtle.x() > 4 and turtle.x() < 8:
+#    #    turtle.hidePaint()
+#    #else:
+#    #    turtle.showPaint()
+#    if turtle.x() >= 5: 
+#        print("\n\nYA LLEGUE\n\n")
+#        turtle.backHome()
+#    
+#    print(turtle.x())
+#    turtle.setX(turtle.x() + d)
+#    #turtle.left(90)
+#    rate(60)
 
 # posa una esfera roja 
 #bola = sphere(pos=vector(0, 0, 0), radius=0.5, make_trail=False, color=color.red)

@@ -10,7 +10,7 @@ from visitor import TreeVisitor
 #input_stream = InputStream(input('? '))
 #input_stream = FileStream(sys.argv[1])
 
-print(sys.argv)
+#print(sys.argv)
 if len(sys.argv) <= 1:
     sys.exit("\n[USAGE]: Execute with: python3 script.py [file] (first_procedure_name) (parameters)\n")
 

@@ -1,0 +1,14 @@
+PROC main() IS
+    color(1,0.4,0.2)
+    home()
+    show()
+    hide()
+    up(23*1)
+    down(1)
+    left(4/5)
+    right(123+34-5*(344))
+    mida := 14
+    forward(mida)
+    ou := 34
+    backward(ou)
+END

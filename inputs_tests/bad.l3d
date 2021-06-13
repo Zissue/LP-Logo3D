@@ -1,7 +1,7 @@
-PROC lol(ca,ca)IS
+PROC lol(ca)IS
     hide()
 END
 
 PROC ll()IS
-    yep()
+    lol(asu,23*9,76>2)
 END
