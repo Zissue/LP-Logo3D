@@ -134,10 +134,5 @@ class logo3dVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by logo3dParser#argsPassed.
-    def visitArgsPassed(self, ctx:logo3dParser.ArgsPassedContext):
-        return self.visitChildren(ctx)
-
-
 
 del logo3dParser

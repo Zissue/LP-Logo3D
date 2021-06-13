@@ -87,8 +87,7 @@ while_it : WHILE expr DO instructions END ;
 
 for_it : FOR IDENT FROM expr TO expr DO instructions END ;
 
-invocation : IDENT LP argsPassed RP ;
-argsPassed : (expr (COMMA expr)*)? ;
+invocation : IDENT LP (expr (COMMA expr)*)? RP ;
 
 
 ///////////////// 

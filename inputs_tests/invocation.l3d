@@ -29,6 +29,9 @@ PROC f(a,b) IS
     left(0)
     right(ca)
 
+    arr()
+
+    test(12,123,233234,dfg)
     escriu(numero, 2)
 END
 

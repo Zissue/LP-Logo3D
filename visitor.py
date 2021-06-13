@@ -351,6 +351,7 @@ class TreeVisitor(logo3dVisitor):
         print("\n[WRITE]: ", self.visit(l[1]), " << ", l[1].getText())
 
 
+
     # Auxiliar function to check whether a number is True or False 
     # -1e-6  <=   number   <=  1e-6    then    number == False 
     def isFalse(self, floatNumber):
@@ -358,6 +359,7 @@ class TreeVisitor(logo3dVisitor):
             return True
         else:
             return False
+
 
 
     # Visit a parse tree produced by logo3dParser#conditional.
@@ -387,6 +389,7 @@ class TreeVisitor(logo3dVisitor):
             self.visit(l[5])
 
 
+
     # Visit a parse tree produced by logo3dParser#while_it.
     def visitWhile_it(self, ctx:logo3dParser.While_itContext):
         
@@ -408,6 +411,8 @@ class TreeVisitor(logo3dVisitor):
         while not conditionR:
             self.visit(l[3])
             conditionR = self.isFalse(self.visit(l[1]))
+
+
 
     # Visit a parse tree produced by logo3dParser#for_it.
     def visitFor_it(self, ctx:logo3dParser.For_itContext):
@@ -450,11 +455,12 @@ class TreeVisitor(logo3dVisitor):
         del self.__funcDict[fName].symDict[inducVar]
 
 
+
     # Visit a parse tree produced by logo3dParser#invocation.
     def visitInvocation(self, ctx:logo3dParser.InvocationContext):
 
         l = [n for n in ctx.getChildren()]
-        n = ctx.getChildCount()     # Always 9 tokens
+        n = ctx.getChildCount()     # Min. 3 tokens
 
         print("Num. Tokens: ", n)
         print("=========================\n")
@@ -463,10 +469,33 @@ class TreeVisitor(logo3dVisitor):
             #print("\n", dir(tks), "\n\n")
         print("=========================\n")
 
+        invocName = l[0].getText()
 
-    # Visit a parse tree produced by logo3dParser#argsPassed.
-    def visitArgsPassed(self, ctx:logo3dParser.ArgsPassedContext):
-        return self.visitChildren(ctx)
+        # Check if the invocation name is a procedure name 
+        if invocName not in self.__funcStack:
+            print("[ERROR]: The procedure '",invocName,"' does not exist!",sep="")
+            return
+
+        # Get 
+        l = [n for n in ctx.getChildren() if "getRuleIndex" in dir(n)]
+        n = ctx.getChildCount()     # Min. 3 tokens
+
+        #print("Num. Tokens: ", n)
+        print("----------------\n")
+        for tks in l:
+            print("Token: ",tks.getText())
+            #print("\n", dir(tks), "\n\n")
+        print("----------------\n")
+
+         
+
+        # Check if the number of arguments is correct 
+        #if len()
+
+        evaluatedArgs = [self.visit(n) for n in l]
+
+        print(evaluatedArgs)
+
 
 
     ##### Turtle operations 
