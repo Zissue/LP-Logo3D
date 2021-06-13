@@ -1,4 +1,5 @@
 import sys
+import readline
 if __name__ is not None and "." in __name__:
     from .logo3dParser import logo3dParser
     from .logo3dVisitor import logo3dVisitor
@@ -121,6 +122,11 @@ class TreeVisitor(logo3dVisitor):
         param = [n.getText() for n in ctx.getChildren() 
                  if logo3dParser.IDENT == n.getSymbol().type]
 
+        # Check if there are duplicates parameters 
+        # in the procedure header
+        if len(param) != len(set(param)):
+            sys.exit("[ERROR]: Duplicated parameter name in a procedure header!")
+
         symD = {}
         for p in param:
             symD[p] = 0.0
@@ -163,8 +169,28 @@ class TreeVisitor(logo3dVisitor):
 
     # Visit a parse tree produced by logo3dParser#assignation.
     def visitAssignation(self, ctx:logo3dParser.AssignationContext):
-       return 
 
+        l = [n for n in ctx.getChildren()]
+        n = ctx.getChildCount()
+
+        #print("Num. Tokens: ", n)
+        #print("=========================\n")
+        #for tks in l:
+        #    print("Token: ",tks.getText())
+        #    print("\n", dir(tks), "\n\n")
+        #print("=========================\n")       
+
+        varName = l[0].getText()
+        valueAssign = self.visit(l[2])
+
+        # Get procedure's name from the current procedure 
+        fName = self.__funcStack[len(self.__funcStack)-1]
+
+        # Assign float read from input to the variable in the 
+        # symbols dictionary
+        self.__funcDict[fName].symDict[varName] = valueAssign
+
+        #print(self.__funcDict[fName].symDict)
 
 
 
@@ -182,7 +208,7 @@ class TreeVisitor(logo3dVisitor):
         #print("=========================\n")
 
         if n == 1:
-            # Recursive case 
+            # Recursive case: numExpr 
             if "getRuleIndex" in dir(l[0]):
                 return self.visit(l[0])
             else:
@@ -197,6 +223,30 @@ class TreeVisitor(logo3dVisitor):
             # Case: ( expr ) 
             if "getRuleIndex" in dir(l[1]) and logo3dParser.LP == l[0].getSymbol().type:
                 return self.visit(l[1])
+
+            # Case: expr == expr
+            if logo3dParser.EQ == l[1].getSymbol().type:
+                return float(self.visit(l[0]) == self.visit(l[2]))
+
+            # Case: expr != expr
+            if logo3dParser.DIF == l[1].getSymbol().type:
+                return float(self.visit(l[0]) != self.visit(l[2]))
+
+            # Case: expr < expr
+            if logo3dParser.LT == l[1].getSymbol().type:
+                return float(self.visit(l[0]) < self.visit(l[2]))
+
+            # Case: expr > expr
+            if logo3dParser.GT == l[1].getSymbol().type:
+                return float(self.visit(l[0]) > self.visit(l[2]))
+
+            # Case: expr <= expr
+            if logo3dParser.LTE == l[1].getSymbol().type:
+                return float(self.visit(l[0]) <= self.visit(l[2]))
+
+            # Case: expr >= expr
+            if logo3dParser.GTE == l[1].getSymbol().type:
+                return float(self.visit(l[0]) >= self.visit(l[2]))
 
 
 
@@ -244,18 +294,18 @@ class TreeVisitor(logo3dVisitor):
             if logo3dParser.MUL == l[1].getSymbol().type:
                 return float(self.visit(l[0]) * self.visit(l[2]))
 
-            # Case: numExpr * numExpr
+            # Case: numExpr / numExpr
             if logo3dParser.DIV == l[1].getSymbol().type:
                 denom = self.visit(l[2])
                 if denom == 0:
                     sys.exit("[ERROR]: Float division by ZERO!")
                 return float(self.visit(l[0]) / denom)
 
-            # Case: numExpr * numExpr
+            # Case: numExpr + numExpr
             if logo3dParser.ADD == l[1].getSymbol().type:
                 return float(self.visit(l[0]) + self.visit(l[2]))
 
-            # Case: numExpr * numExpr
+            # Case: numExpr - numExpr
             if logo3dParser.SUB == l[1].getSymbol().type:
                 return float(self.visit(l[0]) - self.visit(l[2]))
 
@@ -264,8 +314,31 @@ class TreeVisitor(logo3dVisitor):
     # Visit a parse tree produced by logo3dParser#read.
     def visitRead(self, ctx:logo3dParser.ReadContext):
 
+        l = [n for n in ctx.getChildren()]
+        n = ctx.getChildCount()     # Always size 2 
 
-        return self.visitChildren(ctx)
+        varName = l[1].getText()
+
+        auxPrompt = "[READ]: " + varName + " << "
+
+        # Only read an input that can be casted to float 
+        while True:
+            try:
+                floatRead = float(input(auxPrompt))
+            except ValueError:
+                print("[ERROR]: Please introduce a single (float) number to READ!")
+                continue
+            else:
+                # Successfully read a float 
+                break
+
+        # Get procedure's name from the current procedure 
+        fName = self.__funcStack[len(self.__funcStack)-1]
+
+        # Assign float read from input to the variable in the 
+        # symbols dictionary
+        self.__funcDict[fName].symDict[varName] = floatRead
+
 
 
     # Visit a parse tree produced by logo3dParser#write.
@@ -275,7 +348,7 @@ class TreeVisitor(logo3dVisitor):
         n = ctx.getChildCount()     # Always size 2 
 
         # Visit the expresion first and the print the result returned 
-        print("\n[WRITE] ", self.visit(l[1]), " << ", l[1].getText())
+        print("\n[WRITE]: ", self.visit(l[1]), " << ", l[1].getText())
 
 
 
