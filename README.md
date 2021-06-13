@@ -3,7 +3,8 @@
 Aquest és el meu projecte de Compiladors de l'asignatura de "Llenguatges de Programació" del curs *2020-2021 Q2*.
 
 **Autor**: Zixuan Sun
- **Grup**: 22 L
+
+**Grup**: 22 L
 
 
 # Arxius
