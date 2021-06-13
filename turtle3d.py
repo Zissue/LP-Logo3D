@@ -28,7 +28,7 @@ class Turtle3D:
                  originI = vector(0,0,0), 
                  alphaI = 0,
                  betaI = 0,
-                 radiusI = 0.5,
+                 radiusI = 0.2,
                  opactityI = 1, 
                  debug = False):
         
@@ -71,25 +71,18 @@ class Turtle3D:
 
     def left(self, angle):
         self.__alpha += math.radians(-angle)
-
         newx = math.cos(self.__alpha)*math.cos(self.__beta)
         newy = math.sin(self.__beta)
         newz = math.sin(self.__alpha)*math.cos(self.__beta)
-
         self.__facingDir = vector(newx, newy, newz)
-
-        #self.__update()
         
 
     def right(self, angle):
         self.__alpha += math.radians(angle)
-
         newx = math.cos(self.__alpha)*math.cos(self.__beta)
         newy = math.sin(self.__beta)
         newz = math.sin(self.__alpha)*math.cos(self.__beta)
-
         self.__facingDir = vector(newx, newy, newz)
-        #self.__update()
         
 
     def up(self, angle):
@@ -97,63 +90,52 @@ class Turtle3D:
         newx = math.cos(self.__alpha)*math.cos(self.__beta)
         newy = math.sin(self.__beta)
         newz = math.sin(self.__alpha)*math.cos(self.__beta)
-
         self.__facingDir = vector(newx, newy, newz)
-        #self.__update()
-
-        
+    
 
     def down(self, angle):
         self.__beta += math.radians(-angle)
         newx = math.cos(self.__alpha)*math.cos(self.__beta)
         newy = math.sin(self.__beta)
         newz = math.sin(self.__alpha)*math.cos(self.__beta)
-
         self.__facingDir = vector(newx, newy, newz)
-        #self.__update()
         
 
     def forward(self, incre):
         currPos = self.__position
         v = self.__facingDir
         newPos = vector(incre*v.x, incre*v.y, incre*v.z)
-        sphere(pos=currPos, radius=0.2, color=self.__myColor)
-        cylinder(pos=currPos, axis=newPos, radius=0.2, color=self.__myColor)
-        sphere(pos=currPos+newPos, radius=0.2, color=self.__myColor)
+        sphere(pos=currPos, radius=self.__radius*0.8, color=self.__myColor, opacity=self.__opacity)
+        cylinder(pos=currPos, axis=newPos, radius=self.__radius*0.8, color=self.__myColor, opacity=self.__opacity)
+        sphere(pos=currPos+newPos, radius=self.__radius*0.8, color=self.__myColor, opacity=self.__opacity)
         self.__position = currPos+newPos
-        self.__turtle.pos = currPos+newPos
-        #self.__update()
+        #self.__turtle.pos = currPos+newPos
+        self.__update()
         
 
     def backward(self, incre):
         currPos = self.__position
         v = self.__facingDir
         newPos = vector(-incre*v.x, -incre*v.y, -incre*v.z)
-        sphere(pos=currPos, radius=0.2, color=self.__myColor)
-        cylinder(pos=currPos, axis=newPos, radius=0.2, color=self.__myColor)
-        sphere(pos=currPos+newPos, radius=0.2, color=self.__myColor)
+        sphere(pos=currPos, radius=self.__radius*0.8, color=self.__myColor, opacity=self.__opacity)
+        cylinder(pos=currPos, axis=newPos, radius=self.__radius*0.8, color=self.__myColor, opacity=self.__opacity)
+        sphere(pos=currPos+newPos, radius=self.__radius*0.8, color=self.__myColor, opacity=self.__opacity)
         self.__position = currPos+newPos
-        self.__turtle.pos = currPos+newPos
-        #self.__update()
+        #self.__turtle.pos = currPos+newPos
+        self.__update()
         
 
-    def hidePaint(self):
+    def hide(self):
         self.__opacity = 0
         self.__update()
         
-
-    def showPaint(self):
+    def show(self):
         self.__opacity = 1
         self.__update()
-        
 
-    def backHome(self):
+    def home(self):
         self.__position = self.__originPoint
-        self.__turtle.pos = self.__position
-        self.__turtle = sphere(pos=self.__position,
-                               radius=self.__radius,
-                               opactity=self.__opacity,
-                               color=self.__myColor)        
+        self.__update()        
 
     def x(self):
         return self.__position.x
@@ -168,25 +150,64 @@ class Turtle3D:
         self.__myColor = vector(r,g,b)
         self.__update()
 
-    def setOriginPoint(self, point):
-        self.__originPoint = point
-        self.__update()
+    def setOriginPoint(self, x, y, z):
+        self.__originPoint = vector(x,y,z)
 
     def setX(self, x):
         self.__position.x = x
+        self.__update()
+
+    def setY(self, y):
+        self.__position.y = y
+        self.__update()
+
+    def setZ(self, z):
+        self.__position.z = z
+        self.__update()
+
+    def setRadius(self, r):
+        self.__radius = r
         self.__update()
 
 
 
 ########################
 
+# t = Turtle3D(debug=False)
 
 
-turtle = Turtle3D(debug=True)
 
-for i in range(4):
-    turtle.forward(10)
-    turtle.right(90)
+# def cercle(mida, costats):
+#     for i in range(1,costats+1):
+#         t.forward(mida)
+#         t.left(360/costats)
+
+# def espiral(cercles):
+#     if cercles > 0:
+#         cercle(1,12)
+#         t.up(5)
+#         espiral(cercles-1)
+
+# espiral(5)
+
+# turtle = Turtle3D(debug=True)
+
+# turtle.forward(10)
+# turtle.color(0,1,1)
+# turtle.home()
+# turtle.right(90)
+# turtle.forward(10)
+# turtle.hide()
+
+# turtle.left(90)
+# turtle.forward(10)
+
+# turtle.color(1,0,1)
+# turtle.show()
+# turtle.left(90)
+# turtle.forward(10)
+
+
 
 
 

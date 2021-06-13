@@ -557,10 +557,6 @@ class TreeVisitor(logo3dVisitor):
         evaluatedArgs = [self.visit(n) for n in l]
         #print(evaluatedArgs) 
 
-        # List of arguments passed evaluated 
-        evaluatedArgs = [self.visit(n) for n in l]
-        #print(evaluatedArgs) 
-
         #if self.__funcStack[len(self.__funcStack)-1] == self.__firstProcedure:
 
         # Copy of the original table of symbols 
@@ -580,6 +576,8 @@ class TreeVisitor(logo3dVisitor):
         self.__funcStack.append(invocName)
 
         self.visit(self.__funcDict[invocName].blockofCode)
+
+        self.__funcStack.pop(len(self.__funcStack)-1)
 
 
 
@@ -611,7 +609,7 @@ class TreeVisitor(logo3dVisitor):
         if not self.__enableTurt:
             self.initializeTurtle()
 
-        # self.__turtle.color(rgb[0],rgb[1],rgb[2])
+        self.__turtle.color(rgb[0],rgb[1],rgb[2])
         print("[Turtle3D]: Color set to rgb", rgb , " successfully!", sep="")
 
 
@@ -638,7 +636,7 @@ class TreeVisitor(logo3dVisitor):
         if not self.__enableTurt:
             self.initializeTurtle()
 
-        # self.__turtle.home()
+        self.__turtle.home()
         print("[Turtle3D]: Home position!", sep="")
 
 
@@ -664,7 +662,7 @@ class TreeVisitor(logo3dVisitor):
         if not self.__enableTurt:
             self.initializeTurtle()
 
-        # self.__turtle.show()
+        self.__turtle.show()
         print("[Turtle3D]: Showing paint!", sep="")
 
 
@@ -690,7 +688,7 @@ class TreeVisitor(logo3dVisitor):
         if not self.__enableTurt:
             self.initializeTurtle()
 
-        # self.__turtle.hide()
+        self.__turtle.hide()
         print("[Turtle3D]: Hiding paint!", sep="")
 
 
@@ -718,7 +716,7 @@ class TreeVisitor(logo3dVisitor):
         if not self.__enableTurt:
             self.initializeTurtle()
 
-        # self.__turtle.forward(arg)
+        self.__turtle.forward(arg)
         print("[Turtle3D]: Moved forward ", arg, " units successfully!", sep="")
 
 
@@ -746,7 +744,7 @@ class TreeVisitor(logo3dVisitor):
         if not self.__enableTurt:
             self.initializeTurtle()
 
-        # self.__turtle.backward(arg)
+        self.__turtle.backward(arg)
         print("[Turtle3D]: Moved backward ", arg, " units successfully!", sep="")
 
 
@@ -774,7 +772,7 @@ class TreeVisitor(logo3dVisitor):
         if not self.__enableTurt:
             self.initializeTurtle()
 
-        # self.__turtle.up(arg)
+        self.__turtle.up(arg)
         print("[Turtle3D]: Turned ", arg, " degrees upward successfully!", sep="")
 
 
@@ -802,7 +800,7 @@ class TreeVisitor(logo3dVisitor):
         if not self.__enableTurt:
             self.initializeTurtle()
 
-        # self.__turtle.down(arg)
+        self.__turtle.down(arg)
         print("[Turtle3D]: Turned ", arg, " degrees downward successfully!", sep="")
 
 
@@ -830,7 +828,7 @@ class TreeVisitor(logo3dVisitor):
         if not self.__enableTurt:
             self.initializeTurtle()
 
-        # self.__turtle.left(arg)
+        self.__turtle.left(arg)
         print("[Turtle3D]: Turned ", arg, " degrees to the left successfully!", sep="")
 
 
@@ -858,7 +856,7 @@ class TreeVisitor(logo3dVisitor):
         if not self.__enableTurt:
             self.initializeTurtle()
 
-        # self.__turtle.right(arg)
+        self.__turtle.right(arg)
         print("[Turtle3D]: Turned ", arg, " degrees to the right successfully!", sep="")
 
 
