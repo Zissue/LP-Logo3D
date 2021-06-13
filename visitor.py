@@ -772,6 +772,6 @@ class TreeVisitor(logo3dVisitor):
         # Instanciem de la classe Turtle3D
         # NOTA: per veuere els eixos de coordenades
         # cal posar debug a True
-        self.__turtle = Turtle3D(debug=False)
+        self.__turtle = Turtle3D(debug=True)
         self.__enableTurt = True
 
