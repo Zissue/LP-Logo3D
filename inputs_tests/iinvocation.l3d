@@ -1,0 +1,21 @@
+
+
+PROC test1(a,b) IS
+    FOR i FROM a TO b DO
+        << i
+    END
+END
+
+
+PROC test2(a,b) IS
+    << a
+    << b
+END
+
+
+
+PROC main() IS
+    test1(1,5)
+    abe := 3.14
+    test2(22*34/234+23-1,44*abe)
+END

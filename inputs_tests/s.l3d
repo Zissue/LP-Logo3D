@@ -1,6 +1,6 @@
 // Assignation test
 
-PROC name(casa, lolete) IS
+PROC main(casa, lolete) IS
 
     a := 2 
     a := (2*9) 
@@ -63,6 +63,7 @@ PROC name(casa, lolete) IS
     escriu(numero, 2)
     color(0.2, 0.2, 1)
     cercle(1, 12)
+    costats := 3
     left(360 / costats)
     forward(mida)
     espiral(cercles - 1)

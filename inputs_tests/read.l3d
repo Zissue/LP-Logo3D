@@ -4,6 +4,9 @@ PROC f(a,b) IS
     >> rado
     >> rada >> rade 
     >> radu
+
+    << rado
+    << rada << rade << radu
 END
 
 PROC main() IS

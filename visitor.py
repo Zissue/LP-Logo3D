@@ -11,21 +11,31 @@ else:
 
 class ProcL3D:
 
-    def __init__(self, fName = "", fParam = [], fDict = {}):
+    def __init__(self, fName = "", fParam = [], fDict = {}, fCode = None):
         self.funcName = fName
         self.listParam = fParam
         self.symDict = fDict
+        self.blockofCode = fCode
 
 #################################
 
 class TreeVisitor(logo3dVisitor):
 
     # Class atributes
-    def __init__(self):
-        self.__nivell = 1
+    def __init__(self, firstPROC = "main", paramInvoc = []):
+        self.__funcList = []
         self.__funcStack = []
         self.__funcDict = {}
+        self.__firstProcedure = firstPROC
+        self.__paramFirstProcedure = paramInvoc
 
+    # Given a substring find the first index of 
+    # the element in the list that contains the substring 
+    def index_string_list(self, the_list, substring):
+        for i, s in enumerate(the_list):
+            if substring in s:
+                  return i
+        return None
 
     # Visit root 
     def visitRoot(self, ctx):
@@ -33,57 +43,76 @@ class TreeVisitor(logo3dVisitor):
         l = [n for n in ctx.getChildren()]
         n = ctx.getChildCount()
 
-        #print("=========================\n")
-        #for tks in l:
-        #    print(tks.getText())
-        #print("=========================\n")
-
         if n <= 1:
             print("\n[WARNING]: No procedures (PROC) in this Logo3D program...\n")
-        else:
-            l.pop()     # removes <EOF> token   
-            for procedure in l:
-                #print(" - " * self.__nivell + procedure.getText())
-                self.__nivell += 1
-                self.visit(procedure)
-                self.__nivell -= 1
+            return
+
+        l.pop()     # removes <EOF> token   
+
+        proceds = [p.getText() for p in l]
+
+        print("=========================\n")
+        for tks in proceds:
+            print(tks)
+        print("=========================\n")
+
+        aux = "PROC"+self.__firstProcedure
+
+        index = self.index_string_list(proceds, aux)
+
+        if index == None:
+            print("\n[ERROR]: First procedure '", self.__firstProcedure, "' does not exist...\n", sep="")
+            return
+        #elif index <= n-2:
+        #    sys.exit("[ERROR:]: Unexpected error ocurred!")
+
+        # List of procedures except the first invocation one 
+        l2 = l[:]
+        l2.pop(index)
+
+        # Visit all the other procedures 
+        for procedure in l2:
+            fName = self.visit(procedure)
+
+        # Visit the first procedure 
+        self.visit(l[index])
 
         print("\n")
 
-        print(self.__funcDict)
-        
 
     # Visit a parse tree produced by logo3dParser#proceD.
     def visitProceD(self, ctx:logo3dParser.ProceDContext):
         
         l = [n for n in ctx.getChildren()]
-        n = ctx.getChildCount()
+        n = ctx.getChildCount()     # Always 3 tokens
 
-        #print("=========================\n")
-        #for tks in l:
-        #    print(tks.getText())
-        #    #print("\n", dir(tks), "\n\n")
-        #print("=========================\n")
+
+        print("Num. Tokens: ", n)
+        print("=========================\n")
+        for tks in l:
+            print("Token: ", tks.getText())
+            #print("\n", dir(tks), "\n\n")
+        print("=========================\n")
         
         if len(l) != 3:
            sys.exit("[ERROR]: Bad procedure declaration...")
             
         symDict = {}
 
-        # Visit function header 
-        self.visit(l[0])
+        # Visit function header and get the procedure name 
+        fName = self.visit(l[0])
 
-        # Visit function body
+        # Save the block of code of the procedure 
+        self.__funcDict[fName].blockofCode = l[1]
+
+        # Visit function body 
         self.visit(l[1])
 
-        
-        #rules = [n for n in ctx.getChildren() if "getRuleIndex" in dir(n)]
-        #for tks in list(ctx.getChildren()):
+        lastElem = len(self.__funcStack)-1
+        self.__funcStack.pop(lastElem)
 
-        #    print(tks.getText())
-        #    #if logo3dParser.IDENT
-        #    #print(dir(tks))
-        #    #print(logo3dParser.symbolicNames[tks.getSymbol().type])
+        return fName
+
 
 
     # Visit a parse tree produced by logo3dParser#funcHeader.
@@ -100,22 +129,26 @@ class TreeVisitor(logo3dVisitor):
 
         fName = l[1].getText()
 
-        if fName not in self.__funcStack:
-            self.__funcStack.append(fName)
+        if fName not in self.__funcList:
+            self.__funcList.append(fName)
             #print("My function name: ", fName)
         else:
             sys.exit("[ERROR]: Procedure name duplicated!")
         
+        self.__funcStack.append(fName)
+
         # Visit functions parameters 
         self.visit(l[3])
+
+        return fName
 
 
 
     # Visit a parse tree produced by logo3dParser#funcParam.
-    def visitFuncParam(self, ctx:logo3dParser.FuncParamContext):
+    def visitFuncParam(self, ctx:logo3dParser.FuncParamContext, ):
 
-        l = [n for n in ctx.getChildren()]
-        n = ctx.getChildCount()
+        #l = [n for n in ctx.getChildren()]
+        #n = ctx.getChildCount()
 
         fN = self.__funcStack[len(self.__funcStack)-1]
 
@@ -143,13 +176,7 @@ class TreeVisitor(logo3dVisitor):
     def visitInstructions(self, ctx:logo3dParser.InstructionsContext):
 
         l = [n for n in ctx.getChildren()]
-        n = ctx.getChildCount()
-
-        print("=========================\n")
-        for tks in l:
-            print(tks.getText())
-            #print("\n", dir(tks), "\n\n")
-        print("=========================\n")
+        n = ctx.getChildCount()     # At least 1 token
 
         for stmt in l:
             self.visit(stmt)
@@ -314,6 +341,9 @@ class TreeVisitor(logo3dVisitor):
     # Visit a parse tree produced by logo3dParser#read.
     def visitRead(self, ctx:logo3dParser.ReadContext):
 
+        if self.__funcStack[0] != self.__firstProcedure:
+            return
+
         l = [n for n in ctx.getChildren()]
         n = ctx.getChildCount()     # Always size 2 
 
@@ -344,11 +374,14 @@ class TreeVisitor(logo3dVisitor):
     # Visit a parse tree produced by logo3dParser#write.
     def visitWrite(self, ctx:logo3dParser.WriteContext):
         
+        if self.__funcStack[0] != self.__firstProcedure:
+            return
+
         l = [n for n in ctx.getChildren()]
         n = ctx.getChildCount()     # Always size 2 
 
         # Visit the expresion first and the print the result returned 
-        print("\n[WRITE]: ", self.visit(l[1]), " << ", l[1].getText())
+        print("[WRITE]: ", self.visit(l[1]), " << ", l[1].getText())
 
 
 
@@ -368,12 +401,12 @@ class TreeVisitor(logo3dVisitor):
         l = [n for n in ctx.getChildren()]
         n = ctx.getChildCount()     # Always 5 or 7 tokens
 
-        print("Num. Tokens: ", n)
-        print("=========================\n")
-        for tks in l:
-            print("Token: ",tks.getText())
-            #print("\n", dir(tks), "\n\n")
-        print("=========================\n")        
+        #print("Num. Tokens: ", n)
+        #print("=========================\n")
+        #for tks in l:
+        #    print("Token: ",tks.getText())
+        #    #print("\n", dir(tks), "\n\n")
+        #print("=========================\n")        
 
         # Check if the condition is False or True 
         conditionR = self.isFalse(self.visit(l[1]))
@@ -420,12 +453,12 @@ class TreeVisitor(logo3dVisitor):
         l = [n for n in ctx.getChildren()]
         n = ctx.getChildCount()     # Always 9 tokens
 
-        print("Num. Tokens: ", n)
-        print("=========================\n")
-        for tks in l:
-            print("Token: ",tks.getText())
-            #print("\n", dir(tks), "\n\n")
-        print("=========================\n")
+        #print("Num. Tokens: ", n)
+        #print("=========================\n")
+        #for tks in l:
+        #    print("Token: ",tks.getText())
+        #    #print("\n", dir(tks), "\n\n")
+        #print("=========================\n")
 
         # Get procedure's name from the current procedure 
         fName = self.__funcStack[len(self.__funcStack)-1]
@@ -460,41 +493,72 @@ class TreeVisitor(logo3dVisitor):
     def visitInvocation(self, ctx:logo3dParser.InvocationContext):
 
         l = [n for n in ctx.getChildren()]
-        n = ctx.getChildCount()     # Min. 3 tokens
+        #n = ctx.getChildCount()     # At least 3 tokens
 
-        print("Num. Tokens: ", n)
-        print("=========================\n")
-        for tks in l:
-            print("Token: ",tks.getText())
-            #print("\n", dir(tks), "\n\n")
-        print("=========================\n")
+        #print("Num. Tokens: ", n)
+        #print("=========================\n")
+        #for tks in l:
+        #    print("Token: ",tks.getText())
+        #    #print("\n", dir(tks), "\n\n")
+        #print("=========================\n")
 
         invocName = l[0].getText()
 
+        if self.__funcStack[0] != self.__firstProcedure:
+            print("YEP!!")
+            return
+        
+        print("Invocating...")
+
         # Check if the invocation name is a procedure name 
-        if invocName not in self.__funcStack:
+        if invocName not in self.__funcList:
             print("[ERROR]: The procedure '",invocName,"' does not exist!",sep="")
             return
 
-        # Get 
+        # List of the parameters tokens 
         l = [n for n in ctx.getChildren() if "getRuleIndex" in dir(n)]
-        n = ctx.getChildCount()     # Min. 3 tokens
+        n = ctx.getChildCount()     
 
         #print("Num. Tokens: ", n)
-        print("----------------\n")
-        for tks in l:
-            print("Token: ",tks.getText())
-            #print("\n", dir(tks), "\n\n")
-        print("----------------\n")
+        #print("----------------\n")
+        #for tks in l:
+        #    print("Token: ",tks.getText())
+        #    #print("\n", dir(tks), "\n\n")
+        #print("----------------\n")
 
-         
+        ## Get procedure's name from the current procedure 
+        #fName = self.__funcStack[len(self.__funcStack)-1]
+
+        paramList = self.__funcDict[invocName].listParam
 
         # Check if the number of arguments is correct 
-        #if len()
+        if len(paramList) != len(l):
+            print("[ERROR]: Wrong number of parameters  of the invocation '",invocName,"'")
+            return
 
+        # List of arguments passed evaluated 
         evaluatedArgs = [self.visit(n) for n in l]
-
         print(evaluatedArgs)
+
+        #if self.__funcStack[len(self.__funcStack)-1] == self.__firstProcedure:
+
+        # Copy of the original table of symbols 
+        #copyDict = dict(self.__funcDict[invocName].symDict)
+        symDict = self.__funcDict[invocName].symDict
+
+        # Assign the value of the evaluated arguments 
+        # to the parameters 
+        for i in range(0, len(paramList)):
+            varName = paramList[i]
+            argVal = evaluatedArgs[i]
+            symDict[varName] = argVal
+        
+        print(symDict)
+
+        #self.__funcStack.append((invocName, copyDict))
+        self.__funcStack.append(invocName)
+
+        self.visit(self.__funcDict[invocName].blockofCode)
 
 
 

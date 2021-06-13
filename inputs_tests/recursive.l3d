@@ -1,0 +1,10 @@
+PROC test(n) IS
+    << n
+    IF n-1>=0 THEN
+        test(n-1)
+    END
+END
+
+PROC main() IS
+    test(5)
+END
