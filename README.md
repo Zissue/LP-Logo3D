@@ -2,7 +2,7 @@
 
 Aquest és el meu projecte de Compiladors de l'asignatura de "Llenguatges de Programació" del curs *2020-2021 Q2*.
 
-Podeu trobar l'enunciat original [aquí](https://github.com/jordi-petit/lp-logo3d-2021).
+Podeu trobar l'enunciat original en [aquest](https://github.com/jordi-petit/lp-logo3d-2021) altre repositori de GitHub.
 
 
 # Arxius
