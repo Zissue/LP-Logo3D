@@ -11,7 +11,7 @@ Aquest és el meu projecte de Compiladors de l'asignatura de "Llenguatges de Pro
 
 - Fitxer `README.md` aquest fitxer que documenta el projecte.
 
-- Fitxer `logo3d.py` conté el programa principal de l 'intèrpret. 
+- Fitxer `logo3d.py` conté el programa principal de l'intèrpret. 
 
 - Fitxer `logo3d.g` conté la gramàtica pel llenguatge de programació **Logo3D**.
 
