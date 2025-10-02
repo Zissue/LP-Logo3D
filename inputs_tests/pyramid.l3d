@@ -1,4 +1,4 @@
-// Draw a pyramid
+// draw a pyramid
 // This program creates a 3D pyramid structure
 
 PROC triangle(size) IS
