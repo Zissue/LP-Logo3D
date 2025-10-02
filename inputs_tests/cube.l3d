@@ -1,0 +1,49 @@
+// Draw a 3D cube
+// This program draws a cube by creating 4 vertical edges 
+// and connecting them with horizontal squares
+
+PROC square(size) IS
+    FOR i FROM 1 TO 4 DO
+        forward(size)
+        left(90)
+    END
+END
+
+PROC cube(size) IS
+    // draw bottom square
+    square(size)
+    
+    // Move up and draw top square
+    up(90)
+    forward(size)
+    down(90)
+    square(size)
+    
+    // Draw vertical edges
+    down(90)
+    forward(size)
+    up(90)
+    left(90)
+    forward(size)
+    
+    up(90)
+    forward(size)
+    down(90)
+    left(90)
+    forward(size)
+    
+    up(90)
+    forward(size)
+    down(90)
+    left(90)
+    forward(size)
+    
+    up(90)
+    forward(size)
+    down(90)
+END
+
+PROC main() IS
+    color(0.2, 0.8, 1.0)  // Cyan color
+    cube(5)
+END
