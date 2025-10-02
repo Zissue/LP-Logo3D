@@ -204,6 +204,12 @@ LP-Logo3D/
 - **`inputs_tests/`**: Directory containing example Logo3D programs for testing and demonstration.
 - **`images/`**: Directory for screenshots of program outputs.
 
+**For detailed architecture and data flow, see [ARCHITECTURE.md](ARCHITECTURE.md).**
+
+## Contributing
+
+Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to contribute to this project.
+
 ## Installation
 
 1. Install the required *Python* libraries from `requirements.txt`:
@@ -512,6 +518,12 @@ LP-Logo3D/
 - **`turtle3d.py`**: API de gràfics tortuga 3D que encapsula VPython per dibuixar.
 - **`inputs_tests/`**: Directori que conté programes Logo3D d'exemple per a proves i demostració.
 - **`images/`**: Directori per a captures de pantalla de les sortides dels programes.
+
+**Per a l'arquitectura detallada i el flux de dades, consulteu [ARCHITECTURE.md](ARCHITECTURE.md).**
+
+## Contribucions
+
+Les contribucions són benvingudes! Si us plau, consulteu [CONTRIBUTING.md](CONTRIBUTING.md) per a les directrius sobre com contribuir a aquest projecte.
 
 ## Instal·lació 
 
