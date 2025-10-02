@@ -80,7 +80,7 @@ PROC square(size) IS
 END
 
 PROC cube(size) IS
-    square(size)           // Draw bottom square
+    square(size)           // draw bottom square
     up(90)
     forward(size)
     down(90)
