@@ -10,7 +10,7 @@ PROC square(size) IS
 END
 
 PROC cube(size) IS
-    // Draw bottom square
+    // draw bottom square
     square(size)
     
     // Move up and draw top square
