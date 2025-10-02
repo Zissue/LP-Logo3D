@@ -8,6 +8,21 @@ You can find the original assignment in [this](https://github.com/jordi-petit/lp
 
 **Logo3D** is an interpreter for a 3D turtle graphics programming language. It extends the classic Logo/Turtle graphics to three dimensions, allowing you to create beautiful 3D drawings and animations using simple commands. The interpreter is built using ANTLR4 for parsing and VPython for 3D visualization.
 
+## Quick Start
+
+```bash
+# 1. Install dependencies
+pip install -r requirements.txt
+
+# 2. Compile the grammar (if not already compiled)
+antlr4 -Dlanguage=Python3 -no-listener -visitor logo3d.g
+
+# 3. Run an example
+python3 logo3d.py inputs_tests/espiral.l3d
+```
+
+The VPython window will open showing an interactive 3D visualization of your program's output!
+
 ## Features
 
 - **3D Turtle Graphics**: Control a 3D turtle to draw in three-dimensional space
@@ -159,18 +174,35 @@ Screenshots of the example programs can be found in the `images/` directory. To 
 
 See `images/README.md` for more details on the expected visual outputs.
 
-## Files
+## Project Structure
 
-- `requirements.txt`: contains the libraries required for the project.
-- `README.md`: this file documents the project.
-- `logo3d.py`: contains the main program for the interpreter.
-- `logo3d.g`: contains the grammar for the **Logo3D** programming language.
-- `visitor.py`: contains the *AST* visitor.
-  
-  *Note: This class INHERITS from the template class created by the ANTLR4 compiler. Therefore, it's necessary to compile the grammar with the **-visitor** flag. This means running:* `antlr4 -Dlanguage=Python3 -no-listener -visitor logo3d.g`
+```
+LP-Logo3D/
+├── logo3d.py           # Main interpreter program
+├── logo3d.g            # ANTLR4 grammar definition
+├── visitor.py          # AST visitor implementation
+├── turtle3d.py         # 3D turtle graphics API (VPython wrapper)
+├── logo3dParser.py     # Generated parser (from logo3d.g)
+├── logo3dLexer.py      # Generated lexer (from logo3d.g)
+├── logo3dVisitor.py    # Generated visitor base class (from logo3d.g)
+├── requirements.txt    # Python dependencies
+├── inputs_tests/       # Example Logo3D programs
+│   ├── espiral.l3d    # 3D spiral example
+│   ├── cube.l3d       # 3D cube example
+│   ├── pyramid.l3d    # Pyramid example
+│   └── ...            # Other test programs
+├── images/             # Screenshots directory
+└── README.md           # This file
+```
 
-- `turtle3d.py`: contains the *Turtle3D* class for drawing with the `vpython` library.
-- `inputs_tests/`: directory containing example Logo3D programs for testing.
+### File Descriptions
+
+- **`logo3d.py`**: Main interpreter program that coordinates the lexer, parser, and visitor.
+- **`logo3d.g`**: ANTLR4 grammar defining the Logo3D language syntax.
+- **`visitor.py`**: AST visitor that executes Logo3D commands. *Note: This class INHERITS from the template class created by the ANTLR4 compiler. Therefore, it's necessary to compile the grammar with the **-visitor** flag.*
+- **`turtle3d.py`**: 3D turtle graphics API that wraps VPython for drawing.
+- **`inputs_tests/`**: Directory containing example Logo3D programs for testing and demonstration.
+- **`images/`**: Directory for screenshots of program outputs.
 
 ## Installation
 
@@ -237,6 +269,41 @@ python3 logo3d.py inputs_tests/espiral.l3d espiral 5
 - `>> variable` - Read input into a variable
 - `<< expression` - Write output
 
+## Troubleshooting
+
+### Grammar Not Compiled
+
+**Error**: `ModuleNotFoundError: No module named 'logo3dVisitor'`
+
+**Solution**: Compile the grammar file first:
+```bash
+antlr4 -Dlanguage=Python3 -no-listener -visitor logo3d.g
+```
+
+### VPython Issues
+
+**Error**: Issues installing or running VPython
+
+**Solution**: 
+- Make sure you have a compatible Python version (Python 3.7-3.11 recommended)
+- For older VPython versions (7.6.1), you may need to use Python 3.9 or earlier
+- Try installing a newer version: `pip install vpython`
+
+### No Display Available
+
+If you're running on a headless server without a display:
+- VPython requires a graphical environment
+- Use X11 forwarding or VNC to run with a display
+- Alternatively, modify the code to export screenshots programmatically
+
+### Main Procedure Not Found
+
+**Error**: Main procedure not defined
+
+**Solution**: Either define a `main()` procedure in your Logo3D program, or specify a different starting procedure:
+```bash
+python3 logo3d.py myprogram.l3d my_procedure
+```
 
 ---
 
@@ -249,6 +316,21 @@ Podeu trobar l'enunciat original en [aquest](https://github.com/jordi-petit/lp-l
 ## Resum
 
 **Logo3D** és un intèrpret per a un llenguatge de programació de gràfics tortuga 3D. Estén el clàssic Logo/Turtle graphics a tres dimensions, permetent crear dibuixos i animacions 3D boniques utilitzant comandes simples. L'intèrpret està construït utilitzant ANTLR4 per a l'anàlisi sintàctic i VPython per a la visualització 3D.
+
+## Inici Ràpid
+
+```bash
+# 1. Instal·lar dependències
+pip install -r requirements.txt
+
+# 2. Compilar la gramàtica (si no està compilada)
+antlr4 -Dlanguage=Python3 -no-listener -visitor logo3d.g
+
+# 3. Executar un exemple
+python3 logo3d.py inputs_tests/espiral.l3d
+```
+
+La finestra VPython s'obrirà mostrant una visualització 3D interactiva de la sortida del vostre programa!
 
 ## Característiques
 
@@ -401,18 +483,35 @@ Les captures de pantalla dels programes d'exemple es poden trobar al directori `
 
 Consulteu `images/README.md` per a més detalls sobre les sortides visuals esperades.
 
-## Arxius
+## Estructura del Projecte
 
-- `requirements.txt`: conté les llibreries requerides pel projecte.
-- `README.md`: aquest fitxer que documenta el projecte.
-- `logo3d.py`: conté el programa principal de l'intèrpret.
-- `logo3d.g`: conté la gramàtica pel llenguatge de programació **Logo3D**.
-- `visitor.py`: conté el visitador de l'*AST*.
-  
-  *Atenció: aquesta classe HEREDA de la classe plantilla creada pel compilador de ANTLR4. Per tant, és necessari compilar la gramàtica amb el flag **-visitor**. És a dir:* `antlr4 -Dlanguage=Python3 -no-listener -visitor logo3d.g`
+```
+LP-Logo3D/
+├── logo3d.py           # Programa principal de l'intèrpret
+├── logo3d.g            # Definició de la gramàtica ANTLR4
+├── visitor.py          # Implementació del visitador AST
+├── turtle3d.py         # API de gràfics tortuga 3D (wrapper VPython)
+├── logo3dParser.py     # Parser generat (des de logo3d.g)
+├── logo3dLexer.py      # Lexer generat (des de logo3d.g)
+├── logo3dVisitor.py    # Classe base del visitador generada (des de logo3d.g)
+├── requirements.txt    # Dependències Python
+├── inputs_tests/       # Programes Logo3D d'exemple
+│   ├── espiral.l3d    # Exemple d'espiral 3D
+│   ├── cube.l3d       # Exemple de cub 3D
+│   ├── pyramid.l3d    # Exemple de piràmide
+│   └── ...            # Altres programes de prova
+├── images/             # Directori de captures de pantalla
+└── README.md           # Aquest fitxer
+```
 
-- `turtle3d.py`: conté la classe *Turtle3D* per pintar amb ajuda de la llibreria `vpython`.
-- `inputs_tests/`: directori que conté programes Logo3D d'exemple per a proves.
+### Descripció dels Fitxers
+
+- **`logo3d.py`**: Programa principal de l'intèrpret que coordina el lexer, parser i visitador.
+- **`logo3d.g`**: Gramàtica ANTLR4 que defineix la sintaxi del llenguatge Logo3D.
+- **`visitor.py`**: Visitador AST que executa les comandes Logo3D. *Atenció: aquesta classe HEREDA de la classe plantilla creada pel compilador de ANTLR4. Per tant, és necessari compilar la gramàtica amb el flag **-visitor**.*
+- **`turtle3d.py`**: API de gràfics tortuga 3D que encapsula VPython per dibuixar.
+- **`inputs_tests/`**: Directori que conté programes Logo3D d'exemple per a proves i demostració.
+- **`images/`**: Directori per a captures de pantalla de les sortides dels programes.
 
 ## Instal·lació 
 
@@ -478,3 +577,39 @@ python3 logo3d.py inputs_tests/espiral.l3d espiral 5
 
 - `>> variable` - Llegir entrada en una variable
 - `<< expressio` - Escriure sortida
+
+## Resolució de Problemes
+
+### Gramàtica No Compilada
+
+**Error**: `ModuleNotFoundError: No module named 'logo3dVisitor'`
+
+**Solució**: Compileu primer el fitxer de gramàtica:
+```bash
+antlr4 -Dlanguage=Python3 -no-listener -visitor logo3d.g
+```
+
+### Problemes amb VPython
+
+**Error**: Problemes instal·lant o executant VPython
+
+**Solució**: 
+- Assegureu-vos de tenir una versió compatible de Python (Python 3.7-3.11 recomanat)
+- Per a versions antigues de VPython (7.6.1), podeu necessitar Python 3.9 o anterior
+- Proveu d'instal·lar una versió més nova: `pip install vpython`
+
+### No Hi Ha Pantalla Disponible
+
+Si esteu executant en un servidor sense pantalla:
+- VPython requereix un entorn gràfic
+- Utilitzeu X11 forwarding o VNC per executar amb una pantalla
+- Alternativament, modifiqueu el codi per exportar captures de pantalla programàticament
+
+### Procediment Main No Trobat
+
+**Error**: Procediment main no definit
+
+**Solució**: Definiu un procediment `main()` al vostre programa Logo3D, o especifiqueu un procediment d'inici diferent:
+```bash
+python3 logo3d.py elprogramameu.l3d el_meu_procediment
+```
